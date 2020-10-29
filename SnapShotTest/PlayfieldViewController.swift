@@ -9,9 +9,14 @@
 import UIKit
 
 class PlayfieldViewController: UIViewController {
+
+    var imageArray : [UIImage] = []
+ 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //        let width = (view.frame.size.width - 20) / 4
         //            let layout = PlayfieldViewController.collec as! UICollectionViewFlowLayout
         //               layout.itemSize = CGSize(width: width, height: width)
