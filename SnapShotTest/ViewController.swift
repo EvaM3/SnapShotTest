@@ -16,21 +16,26 @@ class ViewController: UIViewController {
     @IBOutlet var startButton: UIButton!
     var imageArray: [UIImage]? = nil
     
-   override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
         
         
         if segue.identifier == "PlayfieldSegue" {
             
-            if let dest = segue.destination as? PlayfieldViewController, let imageArrayUnwrapped = self.imageArray {
-                dest.imageArray = imageArrayUnwrapped
+            if let dest = segue.destination as? PlayfieldViewController {
+                if let imageArrayUnwrapped = self.imageArray {
+                    dest.imageArray = imageArrayUnwrapped
+                    
+                    
+                    
+                }
             }
         }
     }
-    
     @IBAction func startButton(_ sender: Any) {
         
         let screenshot = self.view.takeScreenshot()
         let croppedImage =  screenshot.cropImage(toRect: cutOut.frame)
         self.imageArray = croppedImage?.splitImage(row: 4, column: 4)
+        self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
     }
 }

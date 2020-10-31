@@ -32,7 +32,6 @@
                                 </state>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jhf-d7-iyQ"/>
-                                    <segue destination="3kp-9d-SKv" kind="show" identifier="PlayfieldSegue" id="Ccv-Mr-zmu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67c-oE-U17">
@@ -61,6 +60,7 @@
                         <outlet property="canvasImage" destination="otG-9U-iF2" id="4m0-b8-Btx"/>
                         <outlet property="cutOut" destination="67c-oE-U17" id="tYB-lS-tnd"/>
                         <outlet property="startButton" destination="BJO-IZ-ywF" id="INR-ys-KlJ"/>
+                        <segue destination="3kp-9d-SKv" kind="show" identifier="PlayfieldSegue" id="ytw-9h-nEH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
