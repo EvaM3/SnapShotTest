@@ -11,11 +11,21 @@ import UIKit
 class PlayfieldViewController: UIViewController {
 
     var imageArray : [UIImage] = []
- 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+
+       
+  performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
+        
+        
+        
+        
         
         //        let width = (view.frame.size.width - 20) / 4
         //            let layout = PlayfieldViewController.collec as! UICollectionViewFlowLayout
