@@ -21,7 +21,7 @@ class PlayfieldViewController: UIViewController {
         
 
        
-  performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
+  
         
         
         

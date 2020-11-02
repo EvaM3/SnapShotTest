@@ -18,19 +18,19 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
         
-        
         if segue.identifier == "PlayfieldSegue" {
             
             if let dest = segue.destination as? PlayfieldViewController {
                 if let imageArrayUnwrapped = self.imageArray {
                     dest.imageArray = imageArrayUnwrapped
-                    
-                    
-                    
                 }
             }
         }
     }
+    func perform() {
+        performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
+    }
+    
     @IBAction func startButton(_ sender: Any) {
         
         let screenshot = self.view.takeScreenshot()
