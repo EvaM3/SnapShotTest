@@ -27,9 +27,8 @@ class ViewController: UIViewController {
             }
         }
     }
-    func perform() {
-        performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
-    }
+
+  
     
     @IBAction func startButton(_ sender: Any) {
         
@@ -37,8 +36,5 @@ class ViewController: UIViewController {
         let croppedImage =  screenshot.cropImage(toRect: cutOut.frame)
         self.imageArray = croppedImage?.splitImage(row: 4, column: 4)
         self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
-        func playField(_ sender: Any) {
-            performSegue(withIdentifier: "PlayfieldSegue", sender: sender)
-        }
     }
 }
