@@ -11,26 +11,34 @@ import UIKit
 
 
 class PlayfieldViewController: UIViewController, UICollectionViewDataSource {
-   var imageArray : [UIImage] = []
+    @IBOutlet var collectionView: UICollectionView!
     
+    var imageArray : [UIImage] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.collectionView.dataSource = self
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count    }
     
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
-          //cell.self.addSubview(imageArray)      - need to convert
-         // cell.backgroundView = imageArray
-           return cell
-       }
-    // Create your own cell.Copy the code from the colorcell. Alternatives: Instead colorcell, actual image on imagearray.show an image
-                                                                     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
+        let imageView = UIImageView(frame: cell.contentView.frame)
+        imageView.image = imageArray[indexPath.row]
+        cell.addSubview(imageView)
+        
+        return cell
+    }
+    
+    
 }
 class PlayfieldCustomCell: UICollectionViewCell {
     
     var imageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.isUserInteractionEnabled = true
+        //imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -53,6 +61,6 @@ extension PlayfieldCustomCell {
         // padding, width and height still missing.
     }
     
-  
+    
 }
 
