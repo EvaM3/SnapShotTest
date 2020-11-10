@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class PlayfieldViewController: UIViewController, UICollectionViewDataSource {
+class PlayfieldViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
     
     var imageArray : [UIImage] = []
@@ -30,9 +30,16 @@ class PlayfieldViewController: UIViewController, UICollectionViewDataSource {
         
         return cell
     }
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {              // method to implement a grid-based layout.
+        let itemsPerRow: CGFloat = 4
+        let collectionViewWidth: CGFloat = collectionView.frame.width
+        let widthPerItem: CGFloat = collectionViewWidth / itemsPerRow
+        
+        return  CGSize(width: widthPerItem, height: widthPerItem)
+  
+    }
 }
+
 class PlayfieldCustomCell: UICollectionViewCell {
     
     var imageView: UIImageView = {
@@ -58,7 +65,10 @@ extension PlayfieldCustomCell {
         imageView.leftAnchor.self
         imageView.bottomAnchor.self
         imageView.rightAnchor.self
-        // padding, width and height still missing.
+        imageView.frame.width.self
+        imageView.frame.height.self
+        
+        // padding is missing.
     }
     
     
