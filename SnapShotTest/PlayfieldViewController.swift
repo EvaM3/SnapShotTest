@@ -10,14 +10,17 @@ import UIKit
 
 
 
-class PlayfieldViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
     
     var imageArray : [UIImage] = []
+    let itemsPerRow: CGFloat = 4
+    let sectionInsets = UIEdgeInsets(top: 90, left: 5, bottom: 10, right: 5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count    }
@@ -30,47 +33,36 @@ class PlayfieldViewController: UIViewController,UICollectionViewDelegate, UIColl
         
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {              // method to implement a grid-based layout.
-        let itemsPerRow: CGFloat = 4
-        let collectionViewWidth: CGFloat = collectionView.frame.width
-        let widthPerItem: CGFloat = collectionViewWidth / itemsPerRow
-        
-        return  CGSize(width: widthPerItem, height: widthPerItem)
-  
-    }
-}
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {              // method to implement a grid-based layout.
+//        let itemsPerRow: CGFloat = 4
+//        let collectionViewWidth: CGFloat = collectionView.frame.width - 10
+//        let widthPerItem: CGFloat = collectionViewWidth / itemsPerRow
+//
+//        return  CGSize(width: widthPerItem, height: widthPerItem)
+//
+//    }
 
-class PlayfieldCustomCell: UICollectionViewCell {
-    
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        //imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-extension PlayfieldCustomCell {
-    fileprivate func setup() {
-        self.addSubview(imageView)
-        imageView.topAnchor.self
-        imageView.leftAnchor.self
-        imageView.bottomAnchor.self
-        imageView.rightAnchor.self
-        imageView.frame.width.self
-        imageView.frame.height.self
+   
+      func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          sizeForItemAt indexPath: IndexPath) -> CGSize {
+      
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
         
-        // padding is missing.
+        return CGSize(width: widthPerItem, height: widthPerItem)
+      }
+      func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+      }
+      
+      func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+      }
     }
-    
-    
-}
 
