@@ -11,23 +11,47 @@ import UIKit
 
 
 class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var shuffledCollectionView: UICollectionView!    
+    @IBOutlet var gameCollectionView: UICollectionView!
+    
     
     var imageArray : [UIImage] = []
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets(top: 90, left: 5, bottom: 10, right: 5)
+    let collectionViewIdentifier = "PlayfieldCell"
+    let gameCollectionViewIdentifier = "GameCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+        
+        shuffledCollectionView.delegate = self
+        gameCollectionView.delegate = self                     // Initialize the collection views, set the desired frames
+        
+        shuffledCollectionView.dataSource = self
+        gameCollectionView.dataSource = self
+        
+        self.view.addSubview(shuffledCollectionView)
+        self.view.addSubview(gameCollectionView)
     }
+    
+    
+    
+    //        self.collectionView.dataSource = self
+    //        self.collectionView.delegate = self
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
+        var cell = UICollectionViewCell()
         let imageView = UIImageView(frame: cell.contentView.frame)
+        if collectionView == shuffledCollectionView {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
+        }
+        if collectionView == gameCollectionView {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
+        }
+        
         imageView.image = imageArray[indexPath.row]
         cell.addSubview(imageView)
         
@@ -56,5 +80,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
 }
 

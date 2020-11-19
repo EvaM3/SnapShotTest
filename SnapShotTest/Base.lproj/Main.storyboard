@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WWx-43-tuu">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="tiger2" translatesAutoresizingMaskIntoConstraints="NO" id="otG-9U-iF2">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="dWm-WP-pg5" userLabel="MainStackView">
-                                <rect key="frame" x="10" y="113" width="300" height="445"/>
+                                <rect key="frame" x="57" y="407" width="300" height="445"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-eH-44v" userLabel="CutOutStack">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
@@ -92,11 +92,11 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="3kp-9d-SKv" userLabel="PlayfieldVC" customClass="PlayfieldViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mza-Bm-Oeh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="330"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="F6U-nh-6gs">
                                     <size key="itemSize" width="128" height="128"/>
@@ -115,24 +115,57 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView">
+                                <rect key="frame" x="0.0" y="478" width="414" height="384"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aN0-m0-Mml">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCell" id="mwa-6D-Rj7" userLabel="GameCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JS0-Os-boO">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Zone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7j-SG-phJ" userLabel="GameLabel">
+                                <rect key="frame" x="163" y="436" width="88" height="24"/>
+                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="5cp-kT-28e"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="SVe-qF-Yw8"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="m8H-QI-kly"/>
-                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" id="qSp-d6-yEH"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="AKk-PF-q1Q"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="l7j-SG-phJ" secondAttribute="bottom" constant="18" id="MF2-kn-3v4"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="RPv-Mo-jDy"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="trailing" secondItem="uZq-Lx-y2h" secondAttribute="trailing" id="SE6-VS-qRl"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="SyR-eh-kDW"/>
+                            <constraint firstItem="l7j-SG-phJ" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="cMh-u8-p4j"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="dQe-qG-RLd"/>
+                            <constraint firstItem="l7j-SG-phJ" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="18" id="iR4-KC-yJD"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="trailing" secondItem="uZq-Lx-y2h" secondAttribute="trailing" id="r03-QK-BkW"/>
+                            <constraint firstItem="l7j-SG-phJ" firstAttribute="centerY" secondItem="mza-Bm-Oeh" secondAttribute="centerY" id="zay-xi-b37"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
                     <navigationItem key="navigationItem" id="WLA-aT-kNs"/>
                     <connections>
-                        <outlet property="collectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
+                        <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
+                        <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ll-kd-eVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="83.705357142857139"/>
+            <point key="canvasLocation" x="2359.4202898550725" y="83.035714285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1fL-bK-FZa">
@@ -140,7 +173,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WWx-43-tuu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Hs-mX-6Tb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
