@@ -16,6 +16,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
+    var gameArray : [UIImage] = []   // with repeating and count
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets(top: 90, left: 5, bottom: 10, right: 5)
     let collectionViewIdentifier = "PlayfieldCell"
@@ -47,12 +48,15 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         let imageView = UIImageView(frame: cell.contentView.frame)
         if collectionView == shuffledCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
+            imageView.image = imageArray[indexPath.row]
         }
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
+            imageView.image =  UIImage()//gameArray[indexPath.row]       // can use .isEmpty
+        cell.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255))/255.0, green:255.0/255.0, blue:CGFloat(arc4random_uniform(255))/255.0, alpha: 1.0)
         }
         
-        imageView.image = imageArray[indexPath.row]
+        
         cell.addSubview(imageView)
         
         return cell
