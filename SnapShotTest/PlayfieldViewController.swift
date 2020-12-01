@@ -45,7 +45,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.view.addSubview(gameCollectionView)
     }
     
-  //  change imageArray to shuffled array
+    //  change imageArray to shuffled array
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
@@ -54,7 +54,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == gameCollectionView {
             return gameArray.count
         }
-    return 0
+        return 0
     }
     
     
@@ -76,15 +76,37 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
         
     }
-    
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        print("")
-    }     // good for dropping
-    
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let provider = NSItemProvider(object: imageArray[indexPath.row])
-        let dragItem = UIDragItem(itemProvider: provider)    // good for dragging
+        let dragItem = UIDragItem(itemProvider: provider)
+        dragItem.localObject = indexPath
         return [dragItem]
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let destinationIndexPath: IndexPath
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = indexPath
+        } else {
+            let section = collectionView.numberOfSections - 1
+            let itemCount = collectionView.numberOfItems(inSection: section)
+            destinationIndexPath = IndexPath(row: itemCount, section: section)
+            /* coordinator.destinationIndexPath provides the destination IndexPath where content is being dropped.
+                                With default behavior.
+                   */
+        }
+        coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
+            if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
+                if imagesDropped.count > 0 {
+                    let newImage = imagesDropped[0]
+                    self.gameArray.insert(newImage, at: destinationIndexPath.row)
+                    collectionView.insertItems(at: [destinationIndexPath])
+/* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
