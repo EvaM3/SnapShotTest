@@ -22,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
-    var gameArray : [UIImage] = []
+    var shuffledArray : [UIImage] = []
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets()
     let collectionViewIdentifier = "PlayfieldCell"
@@ -32,6 +32,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         shuffledCollectionView.dragInteractionEnabled = true
         gameCollectionView.dragInteractionEnabled = true
+        shuffledCollectionView.dragDelegate = self
+        gameCollectionView.dragDelegate = self
         shuffledCollectionView.dragDelegate = self
         gameCollectionView.dragDelegate = self
         
@@ -45,14 +47,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.view.addSubview(gameCollectionView)
     }
     
-    //  change imageArray to shuffled array
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
             return imageArray.count
         }
         if collectionView == gameCollectionView {
-            return gameArray.count
+            return shuffledArray.count
         }
         return 0
     }
@@ -68,7 +69,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
-            imageView.image = UIImage()  //gameArray[indexPath.row]
+            imageView.image = UIImage()
             cell.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255))/255.0, green:255.0/255.0, blue:CGFloat(arc4random_uniform(255))/255.0, alpha: 1.0)
         }
         imageView.frame = cell.contentView.frame
@@ -101,7 +102,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
                     let newImage = imagesDropped[0]
-                    self.gameArray.insert(newImage, at: destinationIndexPath.row)
+                    self.shuffledArray.insert(newImage, at: destinationIndexPath.row)
                     collectionView.insertItems(at: [destinationIndexPath])
 /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
                 }
