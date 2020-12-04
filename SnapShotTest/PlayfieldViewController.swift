@@ -34,6 +34,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
     let shuffledArray = imageArray.shuffled()
         
+        shuffledCollectionView.isUserInteractionEnabled = true
         shuffledCollectionView.dragInteractionEnabled = true
         gameCollectionView.dragInteractionEnabled = true
         shuffledCollectionView.dragDelegate = self
@@ -50,9 +51,18 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
         
         shuffledCollectionView.reloadData()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
+        tapGesture.numberOfTapsRequired = 2
+        shuffledCollectionView.addGestureRecognizer(tapGesture)
+        
+
 
     }
-    
+    @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
+         let newShuffledArray = shuffledArray.shuffled()
+
+                  }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
@@ -91,6 +101,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destinationIndexPath: IndexPath
         if let indexPath = coordinator.destinationIndexPath {
@@ -112,8 +124,11 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                 self.shuffledArray.remove(at:removeIndexPath.row)
                 self.shuffledCollectionView.reloadData()
                     }
+    /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
                     
-/* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
+        
+                    
+
                 }
             }
         }
