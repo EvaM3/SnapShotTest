@@ -31,6 +31,9 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    let shuffledArray = imageArray.shuffled()
+        
         shuffledCollectionView.dragInteractionEnabled = true
         gameCollectionView.dragInteractionEnabled = true
         shuffledCollectionView.dragDelegate = self
@@ -44,6 +47,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
         
+    
+        
         shuffledCollectionView.reloadData()
 
     }
@@ -51,7 +56,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
-            return imageArray.count
+            return shuffledArray.count
         }
         if collectionView == gameCollectionView {
             return gameArray.count
@@ -65,7 +70,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         let imageView = UIImageView()
         if collectionView == shuffledCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
-            imageView.image = imageArray[indexPath.row]
+            imageView.image = shuffledArray[indexPath.row]
             
         }
         if collectionView == gameCollectionView {
@@ -78,7 +83,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        let provider = NSItemProvider(object: imageArray[indexPath.row])
+        let provider = NSItemProvider(object: shuffledArray[indexPath.row])
         let dragItem = UIDragItem(itemProvider: provider)
         dragItem.localObject = indexPath
         return [dragItem]
@@ -104,7 +109,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                     self.gameArray.insert(newImage, at: destinationIndexPath.row)
                     collectionView.insertItems(at: [destinationIndexPath])
             if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
-                self.imageArray.remove(at:removeIndexPath.row)
+                self.shuffledArray.remove(at:removeIndexPath.row)
                 self.shuffledCollectionView.reloadData()
                     }
                     
