@@ -23,6 +23,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     var imageArray : [UIImage] = []
     var shuffledArray : [UIImage] = []
+    var gameArray : [UIImage] = []
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets()
     let collectionViewIdentifier = "PlayfieldCell"
@@ -34,8 +35,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         gameCollectionView.dragInteractionEnabled = true
         shuffledCollectionView.dragDelegate = self
         gameCollectionView.dragDelegate = self
-        shuffledCollectionView.dragDelegate = self
-        gameCollectionView.dragDelegate = self
+        shuffledCollectionView.dropDelegate = self
+        gameCollectionView.dropDelegate = self
         
         self.shuffledCollectionView.delegate = self
         self.gameCollectionView.delegate = self
@@ -43,8 +44,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
         
-        self.view.addSubview(shuffledCollectionView)
-        self.view.addSubview(gameCollectionView)
+        shuffledCollectionView.reloadData()
+
     }
     
     
@@ -53,7 +54,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             return imageArray.count
         }
         if collectionView == gameCollectionView {
-            return shuffledArray.count
+            return gameArray.count
         }
         return 0
     }
@@ -69,8 +70,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
-            imageView.image = UIImage()
-            cell.backgroundColor = UIColor(red: CGFloat(arc4random_uniform(255))/255.0, green:255.0/255.0, blue:CGFloat(arc4random_uniform(255))/255.0, alpha: 1.0)
+            imageView.image = gameArray[indexPath.row]
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
@@ -91,9 +91,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if let indexPath = coordinator.destinationIndexPath {
             destinationIndexPath = indexPath
         } else {
-            let section = collectionView.numberOfSections - 1
-            let itemCount = collectionView.numberOfItems(inSection: section)
-            destinationIndexPath = IndexPath(row: itemCount, section: section)
+            let itemCount = collectionView.numberOfItems(inSection: 0)
+            destinationIndexPath = IndexPath(row: itemCount, section: 0)
             /* coordinator.destinationIndexPath provides the destination IndexPath where content is being dropped.
                                 With default behavior.
                    */
@@ -102,30 +101,35 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
                     let newImage = imagesDropped[0]
-                    self.shuffledArray.insert(newImage, at: destinationIndexPath.row)
+                    self.gameArray.insert(newImage, at: destinationIndexPath.row)
                     collectionView.insertItems(at: [destinationIndexPath])
+            if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
+                self.imageArray.remove(at:removeIndexPath.row)
+                self.shuffledCollectionView.reloadData()
+                    }
+                    
 /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
                 }
             }
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width:80 , height:80)
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = cellSize
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-        layout.minimumLineSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
-        
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        return cellSize
-    }
-    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let cellSize = CGSize(width:80 , height:80)
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = cellSize
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+//        layout.minimumLineSpacing = 1.0
+//        layout.minimumInteritemSpacing = 1.0
+//
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+//        return cellSize
+//    }
+
     
     
 }
