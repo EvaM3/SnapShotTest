@@ -32,7 +32,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    let shuffledArray = imageArray.shuffled()
+        shuffledArray = imageArray.shuffled()
         
         shuffledCollectionView.isUserInteractionEnabled = true
         shuffledCollectionView.dragInteractionEnabled = true
@@ -60,8 +60,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
 
     }
     @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
-         let newShuffledArray = shuffledArray.shuffled()
-
+        gameArray = []
+        shuffledArray = imageArray.shuffled()
+        self.shuffledCollectionView.reloadData()
+        self.gameCollectionView.reloadData()
                   }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
