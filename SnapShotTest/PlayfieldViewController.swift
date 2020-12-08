@@ -24,6 +24,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var imageArray : [UIImage] = []
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
+    var defaultImage : UIImage = UIImage(named: "placeHolder")!
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets()
     let collectionViewIdentifier = "PlayfieldCell"
@@ -124,6 +125,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                     collectionView.insertItems(at: [destinationIndexPath])
             if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
                 self.shuffledArray.remove(at:removeIndexPath.row)
+                self.gameArray.swapAt(destinationIndexPath.row, removeIndexPath.row)
                 self.shuffledCollectionView.reloadData()
                     }
     /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
