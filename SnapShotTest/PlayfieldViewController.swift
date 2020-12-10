@@ -31,10 +31,19 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let gameCollectionViewIdentifier = "GameCell"
     
     
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
+      //  let defaultImageArray : [UIImage] = defaultImage(repeating: "placeHolder", count: 15)
         shuffledArray = imageArray.shuffled()
+        gameArray.append(defaultImage)
         
         shuffledCollectionView.isUserInteractionEnabled = true
         shuffledCollectionView.dragInteractionEnabled = true
