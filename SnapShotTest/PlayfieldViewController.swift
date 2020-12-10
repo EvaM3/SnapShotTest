@@ -22,13 +22,14 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
+    var defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
-    var defaultImage : UIImage = UIImage(named: "placeHolder")!
     let itemsPerRow: CGFloat = 4
     let sectionInsets = UIEdgeInsets()
     let collectionViewIdentifier = "PlayfieldCell"
     let gameCollectionViewIdentifier = "GameCell"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
-        
+       
     
         
         shuffledCollectionView.reloadData()
@@ -89,6 +90,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
             imageView.image = gameArray[indexPath.row]
+           
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
@@ -126,6 +128,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
                 self.shuffledArray.remove(at:removeIndexPath.row)
                 self.gameArray.swapAt(destinationIndexPath.row, removeIndexPath.row)
+                self.shuffledArray.swapAt(removeIndexPath.row, destinationIndexPath.row)
                 self.shuffledCollectionView.reloadData()
                     }
     /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
