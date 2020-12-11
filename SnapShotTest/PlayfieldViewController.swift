@@ -25,8 +25,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
-    let itemsPerRow: CGFloat = 4
-    let sectionInsets = UIEdgeInsets()
+    let itemsPerRow: CGFloat = 5
     let collectionViewIdentifier = "PlayfieldCell"
     let gameCollectionViewIdentifier = "GameCell"
     
@@ -70,10 +69,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     override func viewDidAppear(_ animated: Bool) {
-           shuffledCollectionView.reloadData()
+        shuffledCollectionView.reloadData()
     }
-   
-   
+    
+    
     
     @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
         gameArray = []
@@ -91,6 +90,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         return 0
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -111,13 +111,30 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth : CGFloat = collectionView.frame.width
+        let widthPerItem : CGFloat = collectionViewWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+        func  collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            return UIEdgeInsets.zero
+        }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let provider = NSItemProvider(object: shuffledArray[indexPath.row])
         let dragItem = UIDragItem(itemProvider: provider)
         dragItem.localObject = indexPath
         return [dragItem]
     }
-    
     
     
     
@@ -145,31 +162,15 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
                         self.shuffledCollectionView.reloadData()
                     }
-                    /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
-                    
-                    
                     
                     
                 }
             }
         }
+        
+        
     }
     
-    //    func collectionView(_ collectionView: UICollectionView,
-    //                        layout collectionViewLayout: UICollectionViewLayout,
-    //                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //        let cellSize = CGSize(width:80 , height:80)
-    //        let layout = UICollectionViewFlowLayout()
-    //        layout.itemSize = cellSize
-    //        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-    //        layout.minimumLineSpacing = 1.0
-    //        layout.minimumInteritemSpacing = 1.0
-    //
-    //        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-    //        let availableWidth = view.frame.width - paddingSpace
-    //        let widthPerItem = availableWidth / itemsPerRow
-    //        return cellSize
-    //    }
     
     
     
@@ -177,44 +178,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
 
 
 
-
-
-
-//func collectionView(_ collectionView: UICollectionView,
-//                    layout collectionViewLayout: UICollectionViewLayout,
-//sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-// let itemsPerRow: CGFloat = 4
-//let collectionViewWidth: CGFloat = collectionview.frame.width
-//let widthPerItem: CGFloat = collectionViewWidth / itemsPerRow
-//
-//return CGSize(width: widthPerItem, height: widthPerItem)
-//
-//}
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
+//    // let sectionInsets = UIEdgeInsets()
 //        return CGSize(width: widthPerItem, height: widthPerItem)
 //    }
 //    func collectionView(_ collectionView: UICollectionView,
