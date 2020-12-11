@@ -22,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
-    var defaultImage : UIImage = UIImage(named: "placeHolder")!
+    let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
     let itemsPerRow: CGFloat = 4
@@ -39,11 +39,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
-      //  let defaultImageArray : [UIImage] = defaultImage(repeating: "placeHolder", count: 15)
+        gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
-        gameArray.append(defaultImage)
+        
         
         shuffledCollectionView.isUserInteractionEnabled = true
         shuffledCollectionView.dragInteractionEnabled = true
@@ -58,24 +57,30 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
-       
-    
         
-        shuffledCollectionView.reloadData()
+        
+        
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
         tapGesture.numberOfTapsRequired = 2
         shuffledCollectionView.addGestureRecognizer(tapGesture)
         
-
-
+        
+        
     }
+    override func viewDidAppear(_ animated: Bool) {
+           shuffledCollectionView.reloadData()
+    }
+   
+   
+    
     @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
         gameArray = []
         shuffledArray = imageArray.shuffled()
         self.shuffledCollectionView.reloadData()
         self.gameCollectionView.reloadData()
-                  }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
@@ -99,7 +104,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
             imageView.image = gameArray[indexPath.row]
-           
+            
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
@@ -125,47 +130,47 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             let itemCount = collectionView.numberOfItems(inSection: 0)
             destinationIndexPath = IndexPath(row: itemCount, section: 0)
             /* coordinator.destinationIndexPath provides the destination IndexPath where content is being dropped.
-                                With default behavior.
-                   */
+             With default behavior.
+             */
         }
         coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
                     let newImage = imagesDropped[0]
+                    self.gameArray.remove(at: destinationIndexPath.row)
                     self.gameArray.insert(newImage, at: destinationIndexPath.row)
-                    collectionView.insertItems(at: [destinationIndexPath])
-            if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
-                self.shuffledArray.remove(at:removeIndexPath.row)
-                self.gameArray.swapAt(destinationIndexPath.row, removeIndexPath.row)
-                self.shuffledArray.swapAt(removeIndexPath.row, destinationIndexPath.row)
-                self.shuffledCollectionView.reloadData()
+                    collectionView.reloadData()
+                    if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
+                        self.shuffledArray.remove(at:removeIndexPath.row)
+                        self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
+                        self.shuffledCollectionView.reloadData()
                     }
-    /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
+                    /* Loads the object of type UIImage from the NSItemProviderReadingItems.Read the first item, -this is the new image being dropped.Place to update datasource.Finally, collectionview inserts new item.*/
                     
-        
                     
-
+                    
+                    
                 }
             }
         }
     }
     
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let cellSize = CGSize(width:80 , height:80)
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = cellSize
-//        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
-//        layout.minimumLineSpacing = 1.0
-//        layout.minimumInteritemSpacing = 1.0
-//
-//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//        let availableWidth = view.frame.width - paddingSpace
-//        let widthPerItem = availableWidth / itemsPerRow
-//        return cellSize
-//    }
-
+    //    func collectionView(_ collectionView: UICollectionView,
+    //                        layout collectionViewLayout: UICollectionViewLayout,
+    //                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //        let cellSize = CGSize(width:80 , height:80)
+    //        let layout = UICollectionViewFlowLayout()
+    //        layout.itemSize = cellSize
+    //        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+    //        layout.minimumLineSpacing = 1.0
+    //        layout.minimumInteritemSpacing = 1.0
+    //
+    //        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+    //        let availableWidth = view.frame.width - paddingSpace
+    //        let widthPerItem = availableWidth / itemsPerRow
+    //        return cellSize
+    //    }
+    
     
     
 }
