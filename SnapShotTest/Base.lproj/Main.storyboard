@@ -116,8 +116,11 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView">
-                                <rect key="frame" x="0.0" y="478" width="414" height="384"/>
+                                <rect key="frame" x="15" y="478" width="384" height="384"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="9FC-na-d5M"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -144,14 +147,15 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="AKk-PF-q1Q"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="l7j-SG-phJ" secondAttribute="bottom" constant="18" id="MF2-kn-3v4"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="l7j-SG-phJ" secondAttribute="bottom" constant="18" id="MGn-hN-Tot"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="RPv-Mo-jDy"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="trailing" secondItem="uZq-Lx-y2h" secondAttribute="trailing" id="SE6-VS-qRl"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="SyR-eh-kDW"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="cMh-u8-p4j"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="dQe-qG-RLd"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="dsr-9U-Ie5"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="18" id="iR4-KC-yJD"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="trailing" secondItem="uZq-Lx-y2h" secondAttribute="trailing" id="r03-QK-BkW"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="centerY" secondItem="mza-Bm-Oeh" secondAttribute="centerY" id="zay-xi-b37"/>
                         </constraints>
