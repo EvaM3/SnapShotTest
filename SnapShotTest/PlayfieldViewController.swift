@@ -135,32 +135,58 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         dragItem.localObject = indexPath
         return [dragItem]
     }
+    //    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+    //        guard let sourcePath = session.items.first?.localObject as? IndexPath,      // disallow dragging across sections
+    //            let destPath = destinationIndexPath,
+    //            sourcePath.section == destPath.section
+    //            else {
+    //                return UICollectionViewDropProposal(operation: .forbidden)
+    //        }
+    //        return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    //    }
     
+    //
     func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
-        return IndexPath(row: 1, section: 0)
-  
+        if proposedIndexPath.row == shuffledArray.count - 1 || proposedIndexPath.row == shuffledArray.count - 2 {
+            return IndexPath(row: 1, section: 0)
+        } else {
+            return proposedIndexPath
+        }
+        
+        //    if proposedIndexPath.row == shuffledArray.count {
+        //         return IndexPath(row: proposedIndexPath.row - 1, section: proposedIndexPath.section)
+        //     } else {
+        //         return proposedIndexPath
+        //     }
     }
-//    func collectionView(_ collectionView: UICollectionView, dragSessionAllowsMoveOperation session: UIDragSession) -> Bool {
-//      if collectionView == shuffledCollectionView {
-//        for item in session.items {
-//            item.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: <#T##(_ObjectiveCBridgeable?, Error?) -> Void#>)
-//          if shuffledArray[indexPath.row] == defaultImage {    in terms of figuring out
-//
-//              return false
-//          }
-//      }
-//      return true
-//    }
-//    }
-//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-//        if collectionView == shuffledCollectionView {
-//            if shuffledArray[indexPath.row] == defaultImage {
-//
-//                return false
-//            }
-//        }
-//        return true
-//    }
+    
+    
+    
+    //    func collectionView(_ collectionView: UICollectionView, targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath, toProposedIndexPath proposedIndexPath: IndexPath) -> IndexPath {
+    //        return IndexPath(row: 1, section: 0)
+    //
+    //    }
+    //    func collectionView(_ collectionView: UICollectionView, dragSessionAllowsMoveOperation session: UIDragSession) -> Bool {
+    //      if collectionView == shuffledCollectionView {
+    //        for item in session.items {
+    //            item.itemProvider.loadObject(ofClass: UIImage.self, completionHandler: <#T##(_ObjectiveCBridgeable?, Error?) -> Void#>)
+    //          if shuffledArray[indexPath.row] == defaultImage {    in terms of figuring out
+    //
+    //              return false
+    //          }
+    //      }
+    //      return true
+    //    }
+    //    }
+    //    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    //        if collectionView == shuffledCollectionView {
+    //            if shuffledArray[indexPath.row] == defaultImage {
+    //
+    //                return false
+    //            }
+    //        }
+    //        return true
+    //    }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destinationIndexPath: IndexPath
@@ -188,6 +214,9 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                     
                 }
             }
+            
+            
+            
         }
         
         
