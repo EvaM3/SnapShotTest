@@ -96,9 +96,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="330"/>
+                                <rect key="frame" x="5" y="128" width="404" height="290"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="F6U-nh-6gs">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jh6-Pe-2I1">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -144,19 +144,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
+                                <rect key="frame" x="358" y="426" width="36" height="28"/>
+                                <state key="normal" image="lookup"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="40" id="7DN-ua-ssA"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="Lf5-Jq-WeN" secondAttribute="trailing" constant="20" id="7lh-cp-E5p"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="8" id="Iir-WA-rR3"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="l7j-SG-phJ" secondAttribute="bottom" constant="18" id="MGn-hN-Tot"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="RPv-Mo-jDy"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="SyR-eh-kDW"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l7j-SG-phJ" secondAttribute="trailing" constant="8" symbolic="YES" id="VlL-gk-hTH"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="c19-Z6-4gG"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="cMh-u8-p4j"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="dsr-9U-Ie5"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="18" id="iR4-KC-yJD"/>
+                            <constraint firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="lBL-uV-KH9"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="trailing" secondItem="uZq-Lx-y2h" secondAttribute="trailing" id="r03-QK-BkW"/>
                             <constraint firstItem="l7j-SG-phJ" firstAttribute="centerY" secondItem="mza-Bm-Oeh" secondAttribute="centerY" id="zay-xi-b37"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
@@ -164,6 +170,7 @@
                     <navigationItem key="navigationItem" id="WLA-aT-kNs"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
+                        <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
                     </connections>
                 </viewController>
@@ -191,6 +198,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="lookup" width="36" height="28"/>
         <image name="tiger2" width="4396" height="2798"/>
     </resources>
 </document>

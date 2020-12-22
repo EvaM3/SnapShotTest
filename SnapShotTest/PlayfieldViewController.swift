@@ -19,6 +19,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBOutlet var shuffledCollectionView: UICollectionView!    
     @IBOutlet var gameCollectionView: UICollectionView!
+    @IBOutlet var lookUpButton: UIButton!
+    
+    
+    
     
     
     var imageArray : [UIImage] = []
@@ -42,7 +46,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
         
-        
+        self.navigationController?.isNavigationBarHidden = true
+        shuffledCollectionView.isScrollEnabled = false
         shuffledCollectionView.isUserInteractionEnabled = true
         shuffledCollectionView.dragInteractionEnabled = true
         gameCollectionView.dragInteractionEnabled = true
@@ -120,11 +125,11 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     func  collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
