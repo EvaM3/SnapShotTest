@@ -11,9 +11,6 @@ import UIKit
 
 
 class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate,UICollectionViewDropDelegate {
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        
-    }
     
     
     
@@ -33,7 +30,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let collectionViewIdentifier = "PlayfieldCell"
     let gameCollectionViewIdentifier = "GameCell"
     var isDragging : Bool = false
-    
+    var gameTimer: Timer?
+    var hintImage = UIImageView()
     
     
     
@@ -63,6 +61,23 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.dataSource = self
         
         
+        //
+        // @objc func showHintImage() {
+        //                   // hintImage.image = UIImage(named: shuffledArray)
+        //              hintImage.backgroundColor = .white
+        //              hintImage.contentMode = .scaleAspectFit
+        //              hintImage.frame = self.view.frame
+        //              self.view.addSubview(hintImage)
+        //              self.gameCollectionView.isHidden = true
+        //              self.view.bringSubviewToFront(hintImage)
+        //              gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
+        //               }
+        //@objc func removeHintImage() {
+        //                     self.view.sendSubviewToBack(hintImage)
+        //                     self.gameCollectionView.isHidden = false
+        //
+        //                  }
+        //
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
@@ -95,6 +110,9 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         return 0
     }
     
+    @IBAction func lookUpButtonTapped(_ sender: UIButton) {
+        
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,98 +156,98 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         if shuffledArray[indexPath.row] == defaultImage {
-            if indexPath.row == 0 {
-                return [UIDragItem]()
-            }
-            let item = self.shuffledArray[indexPath.row]
-            let itemProvider = NSItemProvider(object: item)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.localObject = item
-            return [dragItem]
+            return [UIDragItem]()
         }
+        let item = self.shuffledArray[indexPath.row]
+        let itemProvider = NSItemProvider(object: item)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.localObject = indexPath
+        return [dragItem]
+    }
     
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let destinationIndexPath: IndexPath
+        if let indexPath = coordinator.destinationIndexPath {
+            destinationIndexPath = indexPath
+        } else {
+            let itemCount = collectionView.numberOfItems(inSection: 0)
+            destinationIndexPath = IndexPath(row: itemCount, section: 0)
+        }
         
-        func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-            let destinationIndexPath: IndexPath
-            if let indexPath = coordinator.destinationIndexPath {
-                destinationIndexPath = indexPath
-            } else {
-                let itemCount = collectionView.numberOfItems(inSection: 0)
-                destinationIndexPath = IndexPath(row: itemCount, section: 0)
-            }
-            
-            
-            coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
-                if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
-                    if imagesDropped.count > 0 {
-                        let newImage = imagesDropped[0]
-                        self.gameArray.remove(at: destinationIndexPath.row)
-                        self.gameArray.insert(newImage, at: destinationIndexPath.row)
-                        collectionView.reloadData()
-                        if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
-                            self.shuffledArray.remove(at:removeIndexPath.row)
-                            self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
-                            self.shuffledCollectionView.reloadData()
-                        }
-                        
-                        
+        
+        coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
+            if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
+                if imagesDropped.count > 0 {
+                    let newImage = imagesDropped[0]
+                    self.gameArray.remove(at: destinationIndexPath.row)
+                    self.gameArray.insert(newImage, at: destinationIndexPath.row)
+                    collectionView.reloadData()
+                    if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
+                        self.shuffledArray.remove(at:removeIndexPath.row)
+                        self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
+                        self.shuffledCollectionView.reloadData()
                     }
+                    
+                    
                 }
-                
-            
-                
             }
-        }
+            
+            
             
         }
+        
+        
+    }
+    
 }
-        
-        
-        
-
-    
-
-    
-    //    // let sectionInsets = UIEdgeInsets()
-    //        return CGSize(width: widthPerItem, height: widthPerItem)
-    //    }
-    //    func collectionView(_ collectionView: UICollectionView,
-    //                        layout collectionViewLayout: UICollectionViewLayout,
-    //                        insetForSectionAt section: Int) -> UIEdgeInsets {
-    //        return sectionInsets
-    //    }
-    //
-    //    func collectionView(_ collectionView: UICollectionView,
-    //                        layout collectionViewLayout: UICollectionViewLayout,
-    //                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    //        return sectionInsets.left
-    //    }
 
 
-      //    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
-      //        if collectionView == shuffledCollectionView {return false}
-      //        return true
-      //    }
-      //    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-      //    // Prevents dragging item from 0th index
-      //    if indexPath.row == 0 {
-      //        return [UIDragItem]() // Prevents dragging item from 0th index
-      //    }
-      //    func collectionView(_ collectionView: UICollectionView, dragSessionAllowsMoveOperation session: UIDragSession) -> Bool {
-      //        if collectionView == shuffledCollectionView {
-      //            return false      // try it around
-      //        } else {
-      //        return true
-      //    }
-      //    }
-      //        func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-      //            guard let sourcePath = session.items.first?.localObject as? IndexPath,      // disallow dragging across sections
-      //                let destPath = destinationIndexPath,
-      //                sourcePath.section == destPath.section  // check dragdelegate
-      //                else {
-      //                    return UICollectionViewDropProposal(operation: .forbidden)
-      //            }
-      //            return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-      //        }
-      //
-      
+
+
+
+
+
+
+//    // let sectionInsets = UIEdgeInsets()
+//        return CGSize(width: widthPerItem, height: widthPerItem)
+//    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return sectionInsets
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return sectionInsets.left
+//    }
+
+
+//    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+//        if collectionView == shuffledCollectionView {return false}
+//        return true
+//    }
+//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//    // Prevents dragging item from 0th index
+//    if indexPath.row == 0 {
+//        return [UIDragItem]() // Prevents dragging item from 0th index
+//    }
+//    func collectionView(_ collectionView: UICollectionView, dragSessionAllowsMoveOperation session: UIDragSession) -> Bool {
+//        if collectionView == shuffledCollectionView {
+//            return false      // try it around
+//        } else {
+//        return true
+//    }
+//    }
+//        func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+//            guard let sourcePath = session.items.first?.localObject as? IndexPath,      // disallow dragging across sections
+//                let destPath = destinationIndexPath,
+//                sourcePath.section == destPath.section  // check dragdelegate
+//                else {
+//                    return UICollectionViewDropProposal(operation: .forbidden)
+//            }
+//            return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+//        }
+//
+

@@ -150,6 +150,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
                                 <rect key="frame" x="358" y="426" width="36" height="28"/>
                                 <state key="normal" image="lookup"/>
+                                <connections>
+                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
