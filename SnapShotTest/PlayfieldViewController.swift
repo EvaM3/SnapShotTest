@@ -35,7 +35,22 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
    
     
     
-    
+    @objc func showHintImage() {
+                          //UIImage.splitImage(on: self)
+                          //hintImage.image = [imageArray]
+                          hintImage.contentMode = .scaleAspectFit
+                          hintImage.frame = self.view.frame
+                          self.view.addSubview(hintImage)
+                          self.gameCollectionView.isHidden = true
+                          self.view.bringSubviewToFront(hintImage)
+                          gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
+                           }
+    @objc func removeHintImage() {
+                                 self.view.sendSubviewToBack(hintImage)
+                                 self.gameCollectionView.isHidden = false
+
+                              }
+
     
     
     override func viewDidLoad() {
@@ -66,23 +81,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
 //        }
 
 
-//@objc func showHintImage() {
-//                      //UIImage.splitImage(on: self)
-//                      //hintImage.image = [imageArray]
-//                      hintImage.contentMode = .scaleAspectFit
-//                      hintImage.frame = self.view.frame
-//                      self.view.addSubview(hintImage)
-//                      self.gameCollectionView.isHidden = true
-//                      self.view.bringSubviewToFront(hintImage)
-//                      gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
-//                       }
-//@objc func removeHintImage() {
-//                             self.view.sendSubviewToBack(hintImage)
-//                             self.gameCollectionView.isHidden = false
-//
-//                          }
-//
-//
+
+
     
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
