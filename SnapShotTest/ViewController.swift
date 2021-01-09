@@ -36,5 +36,8 @@ class ViewController: UIViewController {
         let croppedImage =  screenshot.cropImage(toRect: cutOut.frame)
         self.imageArray = croppedImage?.splitImage(row: 4, column: 4)
         self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
+        
+        let originalImage = croppedImage
+        
     }
 }

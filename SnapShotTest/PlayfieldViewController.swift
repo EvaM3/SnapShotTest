@@ -32,7 +32,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var isDragging : Bool = false
     var gameTimer: Timer?
     var hintImage = UIImageView()
-    
+   
     
     
     
@@ -59,26 +59,31 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
-        
-        
-        //
-        // @objc func showHintImage() {
-        //                   // hintImage.image = UIImage(named: shuffledArray)
-        //              hintImage.backgroundColor = .white
-        //              hintImage.contentMode = .scaleAspectFit
-        //              hintImage.frame = self.view.frame
-        //              self.view.addSubview(hintImage)
-        //              self.gameCollectionView.isHidden = true
-        //              self.view.bringSubviewToFront(hintImage)
-        //              gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
-        //               }
-        //@objc func removeHintImage() {
-        //                     self.view.sendSubviewToBack(hintImage)
-        //                     self.gameCollectionView.isHidden = false
-        //
-        //                  }
-        //
-        
+//
+//        func addHintButton() {
+//            let hintButton = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(showHintImage))
+//            navigationItem.leftBarButtonItem = hintButton
+//        }
+
+
+//@objc func showHintImage() {
+//                      //UIImage.splitImage(on: self)
+//                      //hintImage.image = [imageArray]
+//                      hintImage.contentMode = .scaleAspectFit
+//                      hintImage.frame = self.view.frame
+//                      self.view.addSubview(hintImage)
+//                      self.gameCollectionView.isHidden = true
+//                      self.view.bringSubviewToFront(hintImage)
+//                      gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
+//                       }
+//@objc func removeHintImage() {
+//                             self.view.sendSubviewToBack(hintImage)
+//                             self.gameCollectionView.isHidden = false
+//
+//                          }
+//
+//
+    
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
         tapGesture.numberOfTapsRequired = 2
