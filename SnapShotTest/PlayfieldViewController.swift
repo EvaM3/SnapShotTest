@@ -19,7 +19,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var shuffledCollectionView: UICollectionView!    
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
-    
+    @IBOutlet var scoreLabel: UILabel!
     
     
     var imageArray : [UIImage] = []
@@ -32,12 +32,14 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var isDragging : Bool = false
     var gameTimer: Timer?
     var hintImage = UIImageView()
-   
+    var score = 0
+
+     
     
     
     @objc func showHintImage() {
                           //UIImage.splitImage(on: self)
-                          //hintImage.image = [imageArray]
+                         
                           hintImage.contentMode = .scaleAspectFit
                           hintImage.frame = self.view.frame
                           self.view.addSubview(hintImage)
@@ -56,9 +58,11 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scoreLabel.text = "Score: \(score)"
+        
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
-        
+      
         self.navigationController?.isNavigationBarHidden = true
         shuffledCollectionView.isScrollEnabled = false
         shuffledCollectionView.isUserInteractionEnabled = true
@@ -96,7 +100,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         shuffledCollectionView.reloadData()
     }
     
-    
+    @objc func increaseScore() {
+          score += 1
+        scoreLabel.text = "Score: \(score)"
+    }
     
     @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
         gameArray = []

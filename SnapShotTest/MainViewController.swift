@@ -9,12 +9,14 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet var cutOut: UIView!
     @IBOutlet var canvasImage: UIImageView!
     @IBOutlet var startButton: UIButton!
     var imageArray: [UIImage]? = nil
+    let vc = MainViewController()
+  //  vc.imageArray = originalImage
     
     override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
         
@@ -24,6 +26,7 @@ class ViewController: UIViewController {
                 if let imageArrayUnwrapped = self.imageArray {
                     dest.imageArray = imageArrayUnwrapped
                 }
+                // vc.originalImage = originalImage
             }
         }
     }
@@ -37,7 +40,7 @@ class ViewController: UIViewController {
         self.imageArray = croppedImage?.splitImage(row: 4, column: 4)
         self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
         
-        let originalImage = croppedImage
+       // let originalImage = croppedImage
         
     }
 }
