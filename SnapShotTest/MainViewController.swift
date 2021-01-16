@@ -15,8 +15,13 @@ class MainViewController: UIViewController {
     @IBOutlet var canvasImage: UIImageView!
     @IBOutlet var startButton: UIButton!
     var imageArray: [UIImage]? = nil
-    let vc = MainViewController()
-  //  vc.imageArray = originalImage
+  //  let vc = MainViewController()
+    var originalImage = [UIImage]()
+    var croppedImage = UIImage.cropImage
+    
+    
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
         
@@ -26,7 +31,19 @@ class MainViewController: UIViewController {
                 if let imageArrayUnwrapped = self.imageArray {
                     dest.imageArray = imageArrayUnwrapped
                 }
-                // vc.originalImage = originalImage
+                
+                if segue.identifier == "PlayfieldSegue" {
+                    let destinationVC = segue.destination as! PlayfieldViewController
+                    destinationVC.imageArray = originalImage
+                  //  vc.croppedImage = croppedImage
+                    
+                }
+//                if let dest = segue.destination as? PlayfieldViewController {
+//                    if let originalImagePrepared  = self.originalImage {
+//                        vc.originalImage = originalImagePrepared
+//                    }
+//                  //  self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
+//                }
             }
         }
     }
@@ -40,7 +57,7 @@ class MainViewController: UIViewController {
         self.imageArray = croppedImage?.splitImage(row: 4, column: 4)
         self.performSegue(withIdentifier: "PlayfieldSegue", sender: nil)
         
-       // let originalImage = croppedImage
+       
         
     }
 }

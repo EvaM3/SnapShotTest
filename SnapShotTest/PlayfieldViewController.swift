@@ -20,9 +20,11 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var highScoreLabel: UILabel!
     
     
     var imageArray : [UIImage] = []
+    // var originalImage : [UIImage] = []
     let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
@@ -33,26 +35,26 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var hintImage = UIImageView()
     var score = 0
-
-     
+    var highScore = 0
+    
     
     
     @objc func showHintImage() {
-                          //UIImage.splitImage(on: self)
-                         
-                          hintImage.contentMode = .scaleAspectFit
-                          hintImage.frame = self.view.frame
-                          self.view.addSubview(hintImage)
-                          self.gameCollectionView.isHidden = true
-                          self.view.bringSubviewToFront(hintImage)
-                          gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
-                           }
+        //UIImage.splitImage(on: self)
+        //  hintImage.image = originalImage[15]
+        hintImage.contentMode = .scaleAspectFit
+        hintImage.frame = self.view.frame
+        self.view.addSubview(hintImage)
+        self.gameCollectionView.isHidden = true
+        self.view.bringSubviewToFront(hintImage)
+        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
+    }
     @objc func removeHintImage() {
-                                 self.view.sendSubviewToBack(hintImage)
-                                 self.gameCollectionView.isHidden = false
-
-                              }
-
+        self.view.sendSubviewToBack(hintImage)
+        self.gameCollectionView.isHidden = false
+        
+    }
+    
     
     
     override func viewDidLoad() {
@@ -62,7 +64,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
-      
+        
         self.navigationController?.isNavigationBarHidden = true
         shuffledCollectionView.isScrollEnabled = false
         shuffledCollectionView.isUserInteractionEnabled = true
@@ -78,16 +80,32 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
-//
-//        func addHintButton() {
-//            let hintButton = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(showHintImage))
-//            navigationItem.leftBarButtonItem = hintButton
-//        }
-
-
-
-
-    
+        
+        
+        
+        // Highscore checks
+        
+        let storedHighScore = UserDefaults.standard.object(forKey: "highscore")
+        
+        if storedHighScore == nil {
+            highScore = 0
+            highScoreLabel.text = "Highscore: \(highScore)"
+        }
+        if let newScore = storedHighScore as? Int {
+            highScore = newScore
+            highScoreLabel.text = "Highscore: \(highScore)"
+        }
+        
+        //
+        //        func addHintButton() {
+        //            let hintButton = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(showHintImage))
+        //            navigationItem.leftBarButtonItem = hintButton
+        //        }
+        
+        
+        
+        
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
         tapGesture.numberOfTapsRequired = 2
@@ -101,7 +119,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @objc func increaseScore() {
-          score += 1
+        score += 1
         scoreLabel.text = "Score: \(score)"
     }
     
@@ -202,6 +220,14 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                     
                     
                 }
+            }
+            
+            // Highscore
+            
+            if self.score > self.highScore {
+                self.highScore = self.score
+                self.highScoreLabel.text = "Highscore: \(self.highScore)"
+                UserDefaults.standard.set(self.highScore, forKey: "highscore")
             }
             
             

@@ -7,7 +7,7 @@
 //
 import  UIKit
 
-extension UIImage{
+extension UIImage {
     func cropImage(toRect cropRect: CGRect) -> UIImage? {
     
         let imageScale = self.scale

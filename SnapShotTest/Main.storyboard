@@ -12,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="MainViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,6 +100,7 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="9FC-na-d5M"/>
+                                    <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="S4R-Me-8Ih"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
                                     <size key="itemSize" width="128" height="128"/>
@@ -118,22 +119,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Zone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7j-SG-phJ" userLabel="GameLabel">
-                                <rect key="frame" x="163" y="426" width="88" height="44"/>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
-                                <rect key="frame" x="358" y="446" width="36" height="18"/>
+                                <rect key="frame" x="20" y="108" width="24" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="6pT-SY-Nvs"/>
+                                </constraints>
                                 <state key="normal" image="lookup"/>
                                 <connections>
                                     <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:     0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
-                                <rect key="frame" x="271" y="97" width="123" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
+                                <rect key="frame" x="308.5" y="97" width="85.5" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscore:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLF-TR-XZr">
+                                <rect key="frame" x="20" y="458" width="140" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="7mp-Dt-k2r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -142,6 +149,7 @@
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2hW-ZE-AIX" secondAttribute="height" multiplier="202:145" id="MVD-P1-oQe"/>
+                                    <constraint firstAttribute="width" secondItem="2hW-ZE-AIX" secondAttribute="height" multiplier="202:145" id="kIT-ZX-mju"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -166,28 +174,29 @@
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="60" id="0gv-3G-957"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="0yT-mI-k4B"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="1rg-90-7hT"/>
-                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="271" id="38V-em-EXE"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="l7j-SG-phJ" secondAttribute="centerX" id="5Pg-rF-FuY"/>
-                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="Lf5-Jq-WeN" secondAttribute="trailing" constant="20" id="7lh-cp-E5p"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="8Cu-14-uIX"/>
+                            <constraint firstItem="XLF-TR-XZr" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="20" id="995-J3-7bL"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="9" id="BHH-gh-9kY"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="l7j-SG-phJ" secondAttribute="bottom" constant="18" id="MGn-hN-Tot"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l7j-SG-phJ" secondAttribute="trailing" constant="8" symbolic="YES" id="VlL-gk-hTH"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="24" id="YeU-az-Ik1"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" id="BhB-VJ-igs"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="XQO-oK-asE"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
-                            <constraint firstItem="l7j-SG-phJ" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="cMh-u8-p4j"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="XLF-TR-XZr" secondAttribute="bottom" constant="10" id="efA-2v-Qzf"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="ele-Zj-xAw"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="f55-eA-zvh"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="20" id="meS-ko-ElR"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="8" id="rOk-nD-OZu"/>
+                            <constraint firstItem="XLF-TR-XZr" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="20" id="rnO-0X-kJ2"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="rrz-qF-40c"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="8" id="vis-0f-elm"/>
-                            <constraint firstItem="l7j-SG-phJ" firstAttribute="centerY" secondItem="mza-Bm-Oeh" secondAttribute="centerY" id="zay-xi-b37"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="XLF-TR-XZr" secondAttribute="bottom" constant="10" id="vaL-jd-y3r"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="XLF-TR-XZr" secondAttribute="leading" id="yYH-07-LzA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
                     <navigationItem key="navigationItem" id="WLA-aT-kNs"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
+                        <outlet property="highScoreLabel" destination="XLF-TR-XZr" id="6iC-GK-7VL"/>
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
                         <outlet property="scoreLabel" destination="ab1-dQ-CKY" id="FfL-ZH-SGv"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
