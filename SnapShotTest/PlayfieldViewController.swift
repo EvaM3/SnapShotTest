@@ -35,7 +35,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var hintImage = UIImageView()
     var score = 0
-    var highScore = 0
     
     
     
@@ -82,20 +81,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.dataSource = self
         
         
-        
-        // Highscore checks
-        
-        let storedHighScore = UserDefaults.standard.object(forKey: "highscore")
-        
-        if storedHighScore == nil {
-            highScore = 0
-            highScoreLabel.text = "Highscore: \(highScore)"
-        }
-        if let newScore = storedHighScore as? Int {
-            highScore = newScore
-            highScoreLabel.text = "Highscore: \(highScore)"
-        }
-        
         //
         //        func addHintButton() {
         //            let hintButton = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(showHintImage))
@@ -119,7 +104,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @objc func increaseScore() {
-        score += 1
+        score += 1   // penalty points?
         scoreLabel.text = "Score: \(score)"
     }
     
@@ -222,13 +207,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
             
-            // Highscore
-            
-            if self.score > self.highScore {
-                self.highScore = self.score
-                self.highScoreLabel.text = "Highscore: \(self.highScore)"
-                UserDefaults.standard.set(self.highScore, forKey: "highscore")
-            }
+          
             
             
             

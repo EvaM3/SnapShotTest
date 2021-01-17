@@ -135,15 +135,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Highscore:  0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLF-TR-XZr">
-                                <rect key="frame" x="20" y="458" width="140" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="7mp-Dt-k2r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView">
                                 <rect key="frame" x="5" y="148" width="404" height="290"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,28 +166,24 @@
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="0yT-mI-k4B"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="1rg-90-7hT"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="8Cu-14-uIX"/>
-                            <constraint firstItem="XLF-TR-XZr" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="20" id="995-J3-7bL"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="9" id="BHH-gh-9kY"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" id="BhB-VJ-igs"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="XQO-oK-asE"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="XLF-TR-XZr" secondAttribute="bottom" constant="10" id="efA-2v-Qzf"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="ele-Zj-xAw"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="f55-eA-zvh"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="20" id="meS-ko-ElR"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
-                            <constraint firstItem="XLF-TR-XZr" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="20" id="rnO-0X-kJ2"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="zWS-iD-5jP" secondAttribute="leading" id="q8o-P1-5Kr"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="rrz-qF-40c"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="XLF-TR-XZr" secondAttribute="bottom" constant="10" id="vaL-jd-y3r"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="XLF-TR-XZr" secondAttribute="leading" id="yYH-07-LzA"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="50" id="yR6-VM-7o4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
                     <navigationItem key="navigationItem" id="WLA-aT-kNs"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
-                        <outlet property="highScoreLabel" destination="XLF-TR-XZr" id="6iC-GK-7VL"/>
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
                         <outlet property="scoreLabel" destination="ab1-dQ-CKY" id="FfL-ZH-SGv"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>

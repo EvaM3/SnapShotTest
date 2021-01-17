@@ -15,7 +15,6 @@ class MainViewController: UIViewController {
     @IBOutlet var canvasImage: UIImageView!
     @IBOutlet var startButton: UIButton!
     var imageArray: [UIImage]? = nil
-  //  let vc = MainViewController()
     var originalImage = [UIImage]()
     var croppedImage = UIImage.cropImage
     
@@ -35,7 +34,7 @@ class MainViewController: UIViewController {
                 if segue.identifier == "PlayfieldSegue" {
                     let destinationVC = segue.destination as! PlayfieldViewController
                     destinationVC.imageArray = originalImage
-                  //  vc.croppedImage = croppedImage
+                    // vc.croppedImage = croppedImage
                     
                 }
 //                if let dest = segue.destination as? PlayfieldViewController {
