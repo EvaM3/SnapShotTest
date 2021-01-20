@@ -20,7 +20,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var highScoreLabel: UILabel!
+
     
     
     var imageArray : [UIImage] = []
@@ -35,12 +35,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var hintImage = UIImageView()
     var score = 0
-    
+    var croppedImage = UIImage.cropImage
     
     
     @objc func showHintImage() {
         //UIImage.splitImage(on: self)
-        //  hintImage.image = originalImage[15]
+        // hintImage.image = originalImage[15]
+        
         hintImage.contentMode = .scaleAspectFit
         hintImage.frame = self.view.frame
         self.view.addSubview(hintImage)
@@ -60,7 +61,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         super.viewDidLoad()
         
         scoreLabel.text = "Score: \(score)"
-        
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
         
@@ -126,7 +126,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func lookUpButtonTapped(_ sender: UIButton) {
-        
+       showHintImage()
     }
     
     

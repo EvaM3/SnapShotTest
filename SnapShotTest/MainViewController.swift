@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet var startButton: UIButton!
     var imageArray: [UIImage]? = nil
     var originalImage = [UIImage]()
-    var croppedImage = UIImage.cropImage
+    
     
     
     
