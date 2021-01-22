@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension UIImage {
     
     func splitImage(row : Int , column : Int) -> [UIImage] {
@@ -27,6 +26,7 @@ extension UIImage {
         return imageArr
     }
 }
+
 
 
 

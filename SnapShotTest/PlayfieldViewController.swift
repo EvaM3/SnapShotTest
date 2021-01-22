@@ -24,7 +24,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
-    // var originalImage : [UIImage] = []
+    var originalImage = UIImage()
     let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
@@ -33,15 +33,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let gameCollectionViewIdentifier = "GameCell"
     var isDragging : Bool = false
     var gameTimer: Timer?
-    var hintImage = UIImageView()
     var score = 0
     var croppedImage = UIImage.cropImage
-    
+    var hintImage = UIImageView()
     
     @objc func showHintImage() {
         //UIImage.splitImage(on: self)
-        // hintImage.image = originalImage[15]
-        
+        hintImage.image = originalImage
         hintImage.contentMode = .scaleAspectFit
         hintImage.frame = self.view.frame
         self.view.addSubview(hintImage)

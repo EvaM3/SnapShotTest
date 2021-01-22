@@ -95,7 +95,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
                                 <rect key="frame" x="20" y="488" width="374" height="374"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -135,7 +135,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView">
                                 <rect key="frame" x="5" y="148" width="404" height="290"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -169,10 +169,12 @@
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="9" id="BHH-gh-9kY"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" id="BhB-VJ-igs"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="XQO-oK-asE"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="Xay-eV-pe6"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="ele-Zj-xAw"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="f55-eA-zvh"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="hGT-sk-tun"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="20" id="meS-ko-ElR"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="zWS-iD-5jP" secondAttribute="leading" id="q8o-P1-5Kr"/>
