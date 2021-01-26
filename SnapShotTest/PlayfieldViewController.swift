@@ -24,7 +24,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
-    var originalImage = UIImage()
+    var originalImage = [UIImage]()
     let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
@@ -39,7 +39,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @objc func showHintImage() {
         //UIImage.splitImage(on: self)
-        hintImage.image = originalImage
+      //  hintImage.image = originalImage
         hintImage.contentMode = .scaleAspectFit
         hintImage.frame = self.view.frame
         self.view.addSubview(hintImage)
@@ -58,6 +58,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageArray = originalImage
         scoreLabel.text = "Score: \(score)"
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
