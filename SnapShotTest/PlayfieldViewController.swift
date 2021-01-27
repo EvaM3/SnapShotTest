@@ -31,7 +31,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let itemsPerRow: CGFloat = 4
     let collectionViewIdentifier = "PlayfieldCell"
     let gameCollectionViewIdentifier = "GameCell"
-    var isDragging : Bool = false
     var gameTimer: Timer?
     var score = 0
     var croppedImage = UIImage.cropImage
