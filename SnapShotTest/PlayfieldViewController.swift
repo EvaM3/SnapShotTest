@@ -24,7 +24,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     var imageArray : [UIImage] = []
-    var originalImage = [UIImage]()
+    var originalImage = UIImage()
     let defaultImage : UIImage = UIImage(named: "placeHolder")!
     var shuffledArray : [UIImage] = []
     var gameArray : [UIImage] = []
@@ -33,14 +33,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     let gameCollectionViewIdentifier = "GameCell"
     var gameTimer: Timer?
     var score = 0
-    var croppedImage = UIImage.cropImage
     var hintImage = UIImageView()
     
+    
     @objc func showHintImage() {
-        //UIImage.splitImage(on: self)
-      //  hintImage.image = originalImage
-        hintImage.contentMode = .scaleAspectFit
-        hintImage.frame = self.view.frame
+        hintImage.image = originalImage
+        hintImage.contentMode = .scaleToFill  // 
+        hintImage.frame = gameCollectionView.frame
         self.view.addSubview(hintImage)
         self.gameCollectionView.isHidden = true
         self.view.bringSubviewToFront(hintImage)
@@ -48,6 +47,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     @objc func removeHintImage() {
         self.view.sendSubviewToBack(hintImage)
+        self.hintImage.removeFromSuperview()
         self.gameCollectionView.isHidden = false
         
     }
@@ -57,7 +57,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageArray = originalImage
+        imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
         scoreLabel.text = "Score: \(score)"
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
@@ -79,12 +79,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.dataSource = self
         
         
-        //
-        //        func addHintButton() {
-        //            let hintButton = UIBarButtonItem(title: "Hint", style: .plain, target: self, action: #selector(showHintImage))
-        //            navigationItem.leftBarButtonItem = hintButton
-        //        }
-        
+       
         
         
         
@@ -101,16 +96,17 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         shuffledCollectionView.reloadData()
     }
     
-    @objc func increaseScore() {
-        score += 1   // penalty points?
+    @objc func increaseScore(n: Int = 1) {
+        score += n
         scoreLabel.text = "Score: \(score)"
     }
     
     @objc private func didDoubleTap(_gesture: UITapGestureRecognizer) {
-        gameArray = []
+        gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
         self.shuffledCollectionView.reloadData()
         self.gameCollectionView.reloadData()
+        increaseScore(n: 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -125,6 +121,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBAction func lookUpButtonTapped(_ sender: UIButton) {
        showHintImage()
+        increaseScore()
     }
     
     
@@ -180,11 +177,12 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         let destinationIndexPath: IndexPath
-        if let indexPath = coordinator.destinationIndexPath {
+        if let indexPath = coordinator.destinationIndexPath {  //unwrapping
             destinationIndexPath = indexPath
         } else {
             let itemCount = collectionView.numberOfItems(inSection: 0)
             destinationIndexPath = IndexPath(row: itemCount, section: 0)
+            
         }
         
         
@@ -199,6 +197,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.shuffledArray.remove(at:removeIndexPath.row)
                         self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
                         self.shuffledCollectionView.reloadData()
+                        self.increaseScore()
                     }
                     
                     
