@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Social
+
 
 
 
@@ -20,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
-
+    @IBOutlet var shareButton: UIButton!
     
     
     var imageArray : [UIImage] = []
@@ -38,7 +40,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @objc func showHintImage() {
         hintImage.image = originalImage
-        hintImage.contentMode = .scaleToFill  // 
+        hintImage.contentMode = .scaleToFill
         hintImage.frame = gameCollectionView.frame
         self.view.addSubview(hintImage)
         self.gameCollectionView.isHidden = true
@@ -79,7 +81,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.dataSource = self
         
         
-       
+        
         
         
         
@@ -96,7 +98,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         shuffledCollectionView.reloadData()
     }
     
-    @objc func increaseScore(n: Int = 1) {
+    func increaseScore(n: Int = 1) {
         score += n
         scoreLabel.text = "Score: \(score)"
     }
@@ -120,9 +122,56 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func lookUpButtonTapped(_ sender: UIButton) {
-       showHintImage()
+        showHintImage()
         increaseScore()
     }
+    
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        
+        
+        
+        let shareAlert = UIAlertController(title: "Share", message: "Share your score", preferredStyle: .actionSheet)
+        
+        let shareFacebook = UIAlertAction(title: "Share on Facebook", style: .default) { (action) in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
+                let post = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
+                
+                post.setInitialText("My Gridy score is \(self.score)")
+                post.add(UIImage(named: "originalImage"))
+                self.present(post, animated: true, completion: nil)
+            } else {
+                do {self.showAlert(service: "Facebook")}
+            }
+        }
+        
+        let shareTwitter = UIAlertAction(title: "Share on Twitter", style: .default) { (action) in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+                let post = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
+                
+                post.setInitialText("My Gridy score is \(self.score)")
+                post.add(UIImage(named: "originalImage"))
+                self.present(post, animated: true, completion: nil)
+            } else {
+                do {self.showAlert(service: "Twitter")}
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        shareAlert.addAction(shareFacebook) // add action to actionsheet
+        shareAlert.addAction(shareTwitter)
+        shareAlert.addAction(cancelAction)
+        self.present(shareAlert, animated: true, completion: nil)
+    }
+    
+    func showAlert(service: String) {
+        let alert = UIAlertController(title: "Error", message: "You are not connected to \(service)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -151,9 +200,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    //    func  collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    //        return UIEdgeInsets.zero
-    //    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -204,7 +250,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
             
-          
+            
             
             
             
@@ -222,46 +268,4 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
 
 
 
-//    // let sectionInsets = UIEdgeInsets()
-//        return CGSize(width: widthPerItem, height: widthPerItem)
-//    }
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return sectionInsets
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.left
-//    }
-
-
-//    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
-//        if collectionView == shuffledCollectionView {return false}
-//        return true
-//    }
-//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//    // Prevents dragging item from 0th index
-//    if indexPath.row == 0 {
-//        return [UIDragItem]() // Prevents dragging item from 0th index
-//    }
-//    func collectionView(_ collectionView: UICollectionView, dragSessionAllowsMoveOperation session: UIDragSession) -> Bool {
-//        if collectionView == shuffledCollectionView {
-//            return false      // try it around
-//        } else {
-//        return true
-//    }
-//    }
-//        func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-//            guard let sourcePath = session.items.first?.localObject as? IndexPath,      // disallow dragging across sections
-//                let destPath = destinationIndexPath,
-//                sourcePath.section == destPath.section  // check dragdelegate
-//                else {
-//                    return UICollectionViewDropProposal(operation: .forbidden)
-//            }
-//            return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-//        }
-//
 

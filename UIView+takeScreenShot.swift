@@ -14,7 +14,7 @@ extension UIView {
         
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0)
         
-        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)    // to cutOut
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
