@@ -96,10 +96,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
-                                <rect key="frame" x="20" y="488" width="374" height="374"/>
+                                <rect key="frame" x="20" y="493" width="374" height="374"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="9FC-na-d5M"/>
                                     <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="S4R-Me-8Ih"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
@@ -120,7 +119,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
-                                <rect key="frame" x="20" y="108" width="24" height="21"/>
+                                <rect key="frame" x="20" y="93" width="24" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="6pT-SY-Nvs"/>
                                 </constraints>
@@ -130,14 +129,17 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
-                                <rect key="frame" x="293.5" y="97" width="100.5" height="43"/>
+                                <rect key="frame" x="317" y="93" width="77" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
-                                <rect key="frame" x="5" y="148" width="404" height="320"/>
+                                <rect key="frame" x="5" y="148" width="404" height="325"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2hW-ZE-AIX" secondAttribute="height" multiplier="404:325" id="NbA-fv-fK5"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,7 +147,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayfieldCell" id="wqO-uk-JzO">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayfieldCell" id="wqO-uk-JzO" customClass="PlayfieldCell" customModule="SnapShotTest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="irM-Qv-lKW">
@@ -156,44 +158,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pby-qt-s5c">
-                                <rect key="frame" x="170.5" y="99" width="73" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="owz-eH-L7o"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Share">
-                                    <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="Dcc-nG-yGL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="60" id="0gv-3G-957"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="0yT-mI-k4B"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="1rg-90-7hT"/>
-                            <constraint firstItem="Pby-qt-s5c" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="11" id="2UI-uB-YO2"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="8Cu-14-uIX"/>
-                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="9" id="BHH-gh-9kY"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" id="BhB-VJ-igs"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="XQO-oK-asE"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="2hW-ZE-AIX" secondAttribute="trailing" constant="5" id="Xay-eV-pe6"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="bL1-ib-7Hw"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="cSd-Ca-U3c"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="8" id="ele-Zj-xAw"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="f55-eA-zvh"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="hGT-sk-tun"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="20" id="meS-ko-ElR"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="20" id="nMP-vo-PVN"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="ozt-5C-ehV"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="zWS-iD-5jP" secondAttribute="leading" id="q8o-P1-5Kr"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="rrz-qF-40c"/>
-                            <constraint firstItem="Pby-qt-s5c" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="spu-Li-YoJ"/>
-                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="leading" secondItem="Pby-qt-s5c" secondAttribute="trailing" constant="50" id="tvI-Je-5CF"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="5" id="urh-Uy-lYq"/>
+                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="5" id="ytQ-yp-PYd"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" constant="5" id="zSn-qq-iZA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
@@ -202,7 +186,6 @@
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
                         <outlet property="scoreLabel" destination="ab1-dQ-CKY" id="FfL-ZH-SGv"/>
-                        <outlet property="shareButton" destination="Pby-qt-s5c" id="utI-KR-MsG"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
                     </connections>
                 </viewController>

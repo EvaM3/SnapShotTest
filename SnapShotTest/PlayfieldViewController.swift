@@ -22,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var shareButton: UIButton!
+
     
     
     var imageArray : [UIImage] = []
@@ -125,53 +125,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         showHintImage()
         increaseScore()
     }
-    
-    @IBAction func shareButtonTapped(_ sender: UIButton) {
-        
-        
-        
-        let shareAlert = UIAlertController(title: "Share", message: "Share your score", preferredStyle: .actionSheet)
-        
-        let shareFacebook = UIAlertAction(title: "Share on Facebook", style: .default) { (action) in
-            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook) {
-                let post = SLComposeViewController(forServiceType: SLServiceTypeFacebook)!
-                
-                post.setInitialText("My Gridy score is \(self.score)")
-                post.add(UIImage(named: "originalImage"))
-                self.present(post, animated: true, completion: nil)
-            } else {
-                do {self.showAlert(service: "Facebook")}
-            }
-        }
-        
-        let shareTwitter = UIAlertAction(title: "Share on Twitter", style: .default) { (action) in
-            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
-                let post = SLComposeViewController(forServiceType: SLServiceTypeTwitter)!
-                
-                post.setInitialText("My Gridy score is \(self.score)")
-                post.add(UIImage(named: "originalImage"))
-                self.present(post, animated: true, completion: nil)
-            } else {
-                do {self.showAlert(service: "Twitter")}
-            }
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        shareAlert.addAction(shareFacebook) // add action to actionsheet
-        shareAlert.addAction(shareTwitter)
-        shareAlert.addAction(cancelAction)
-        self.present(shareAlert, animated: true, completion: nil)
-    }
-    
-    func showAlert(service: String) {
-        let alert = UIAlertController(title: "Error", message: "You are not connected to \(service)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
