@@ -79,11 +79,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
-        
-        
-        
-        
-        
+        shuffledCollectionView.layoutSubviews()
         
         
         
@@ -183,7 +179,15 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             destinationIndexPath = IndexPath(row: itemCount, section: 0)
             
         }
-        
+   
+  let shareMyText = "My score on Gridy is \(score)"
+  let activityVc = UIActivityViewController(activityItems: [shareMyText], applicationActivities: nil)
+   present(activityVc, animated: true, completion: nil)
+    
+        if let popOver = activityVc.popoverPresentationController {
+            popOver.sourceView = view
+            popOver.sourceView?.center = view.center
+        }
         
         coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
