@@ -22,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
-
+    
     
     
     var imageArray : [UIImage] = []
@@ -94,6 +94,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         shuffledCollectionView.reloadData()
     }
     
+    func restartGame() {
+        self.gameArray.removeAll()
+        self.score = 0
+        self.scoreLabel.text = "Score \(score)"
+        self.shuffledCollectionView.reloadData()
+    }
+    
     func increaseScore(n: Int = 1) {
         score += n
         scoreLabel.text = "Score: \(score)"
@@ -138,6 +145,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
+        cell.layoutIfNeeded()
         return cell
         
     }
@@ -179,16 +187,27 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             destinationIndexPath = IndexPath(row: itemCount, section: 0)
             
         }
-   
-  let shareMyText = "My score on Gridy is \(score)"
-  let activityVc = UIActivityViewController(activityItems: [shareMyText], applicationActivities: nil)
-   present(activityVc, animated: true, completion: nil)
-    
-        if let popOver = activityVc.popoverPresentationController {
-            popOver.sourceView = view
-            popOver.sourceView?.center = view.center
-        }
         
+        
+        
+        
+        func solvedPuzzle() {
+            if self.gameArray == self.imageArray {
+                let alert = UIAlertController(title: "You Won!", message: "Congratulations✌️", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let shareMyText = "My score on Gridy is \(score)"
+                let activityVc = UIActivityViewController(activityItems: [shareMyText], applicationActivities: nil)
+                present(activityVc, animated: true, completion: nil)
+                if let popOver = activityVc.popoverPresentationController {
+                    popOver.sourceView = view
+                    popOver.sourceView?.center = view.center
+                }
+                let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {(action) in self.restartGame() })
+                alert.addAction(okAction)
+                alert.addAction(restartAction)
+                self.present(alert,animated: true, completion: nil)
+            }
+        }
         coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
