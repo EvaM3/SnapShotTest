@@ -11,7 +11,6 @@
 		083CEF1025286022004204B0 /* UIImage+cropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083CEF0F25286022004204B0 /* UIImage+cropImage.swift */; };
 		085B77C725474EE5003D4D03 /* PlayfieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */; };
 		08716BFC252E8D5200ECDEF9 /* UIView+takeScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08716BFB252E8D5200ECDEF9 /* UIView+takeScreenShot.swift */; };
-		0889A9C125A933EB00259504 /* puzzleFinished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889A9C025A933EB00259504 /* puzzleFinished.swift */; };
 		08C2084025B27103003E4609 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C2083F25B27103003E4609 /* Main.storyboard */; };
 		08FD4F23250C3C93002AD6F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD4F22250C3C93002AD6F0 /* AppDelegate.swift */; };
 		08FD4F25250C3C93002AD6F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FD4F24250C3C93002AD6F0 /* SceneDelegate.swift */; };
@@ -25,7 +24,6 @@
 		083CEF0F25286022004204B0 /* UIImage+cropImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+cropImage.swift"; sourceTree = "<group>"; };
 		085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayfieldViewController.swift; sourceTree = "<group>"; };
 		08716BFB252E8D5200ECDEF9 /* UIView+takeScreenShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+takeScreenShot.swift"; sourceTree = "<group>"; };
-		0889A9C025A933EB00259504 /* puzzleFinished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = puzzleFinished.swift; sourceTree = "<group>"; };
 		08C2083E25B26F31003E4609 /* SnapShotTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapShotTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		08C2083F25B27103003E4609 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		08FD4F1F250C3C93002AD6F0 /* SnapShotTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapShotTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +73,6 @@
 				08FD4F26250C3C93002AD6F0 /* MainViewController.swift */,
 				085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */,
 				08C2083F25B27103003E4609 /* Main.storyboard */,
-				0889A9C025A933EB00259504 /* puzzleFinished.swift */,
 				08FD4F2B250C3C95002AD6F0 /* Assets.xcassets */,
 				08FD4F2D250C3C95002AD6F0 /* LaunchScreen.storyboard */,
 				08C2083E25B26F31003E4609 /* SnapShotTest-Bridging-Header.h */,
@@ -159,7 +156,6 @@
 				08FD4F27250C3C93002AD6F0 /* MainViewController.swift in Sources */,
 				085B77C725474EE5003D4D03 /* PlayfieldViewController.swift in Sources */,
 				083CEF1025286022004204B0 /* UIImage+cropImage.swift in Sources */,
-				0889A9C125A933EB00259504 /* puzzleFinished.swift in Sources */,
 				0834486D252A70FC00C4E27F /* UIImage+splitImage.swift in Sources */,
 				08FD4F23250C3C93002AD6F0 /* AppDelegate.swift in Sources */,
 				08716BFC252E8D5200ECDEF9 /* UIView+takeScreenShot.swift in Sources */,

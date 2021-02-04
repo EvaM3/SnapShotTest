@@ -22,7 +22,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
-    
+    @IBOutlet var timeLabel: UILabel!
     
     
     var imageArray : [UIImage] = []
@@ -36,6 +36,9 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var score = 0
     var hintImage = UIImageView()
+    var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    var counter = 0
+    
     
     
     @objc func showHintImage() {
@@ -53,8 +56,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.isHidden = false
         
     }
-    
-    
+    @objc func countDown() {
+        counter -= 1
+        timeLabel.text = "Seconds: \(counter)"
+        if counter == 0 {
+            timer.invalidate()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +71,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         scoreLabel.text = "Score: \(score)"
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray.shuffled()
+        counter = 60
+        timeLabel.text = "Seconds:\(counter)"
         
         self.navigationController?.isNavigationBarHidden = true
         shuffledCollectionView.isScrollEnabled = false
@@ -86,7 +96,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
         tapGesture.numberOfTapsRequired = 2
         shuffledCollectionView.addGestureRecognizer(tapGesture)
-        
         
         
     }

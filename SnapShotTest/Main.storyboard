@@ -26,7 +26,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-eH-44v" userLabel="CutOutStack">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67c-oE-U17">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67c-oE-U17" customClass="cutOut">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
                                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="0.6228328339041096" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -96,11 +96,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
-                                <rect key="frame" x="5" y="499" width="404" height="404"/>
+                                <rect key="frame" x="32" y="505" width="350" height="346"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="S4R-Me-8Ih"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -118,12 +115,28 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
+                                <rect key="frame" x="317" y="441" width="77" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
+                                <rect key="frame" x="20" y="441" width="38" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="6pT-SY-Nvs"/>
+                                </constraints>
+                                <state key="normal" image="lookup"/>
+                                <connections>
+                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
-                                <rect key="frame" x="5" y="93" width="404" height="340"/>
+                                <rect key="frame" x="32" y="88" width="350" height="350"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="340" id="1ZK-cs-1iT"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="325" id="xJG-75-fEn"/>
+                                    <constraint firstAttribute="height" constant="350" id="1ZK-cs-1iT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="311" id="xJG-75-fEn"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -142,36 +155,32 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
-                                <rect key="frame" x="317" y="441" width="77" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seconds: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTf-UB-B0f">
+                                <rect key="frame" x="138" y="450" width="129" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
-                                <rect key="frame" x="20" y="441" width="38" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="38" id="6pT-SY-Nvs"/>
-                                </constraints>
-                                <state key="normal" image="lookup"/>
-                                <connections>
-                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="zWS-iD-5jP" secondAttribute="leading" id="26p-qR-xkn"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="mza-Bm-Oeh" secondAttribute="leadingMargin" id="4ze-4X-4Q2"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="5" id="8Ny-TW-95M"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="32" id="63s-6v-gKW"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="8Ny-TW-95M"/>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" constant="-5" id="BhB-VJ-igs"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="5" id="Gua-GW-7CL"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="Kpa-1I-oyh"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="8" id="dbn-Tq-nel"/>
+                            <constraint firstItem="jTf-UB-B0f" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" id="FIV-0I-geV"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="32" id="Gua-GW-7CL"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="32" id="RDu-uy-uGz"/>
+                            <constraint firstItem="jTf-UB-B0f" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="12" id="TYv-1h-Fnl"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="zWS-iD-5jP" secondAttribute="bottom" constant="11" id="V0u-jg-b4L"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="32" id="VWn-jZ-Bnc"/>
+                            <constraint firstItem="jTf-UB-B0f" firstAttribute="leading" secondItem="Lf5-Jq-WeN" secondAttribute="trailing" constant="80" id="aRp-vG-C9g"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="3" id="dbn-Tq-nel"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="ejy-wS-ANE"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="hnc-bq-Iu7"/>
                             <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="353" id="oyX-pI-wLY"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="ab1-dQ-CKY" secondAttribute="bottom" constant="20" id="uYD-DK-bpX"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" constant="32" id="xDK-kJ-cTH"/>
+                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="leading" secondItem="jTf-UB-B0f" secondAttribute="trailing" constant="50" id="zDe-gz-nrw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
@@ -181,11 +190,12 @@
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
                         <outlet property="scoreLabel" destination="ab1-dQ-CKY" id="FfL-ZH-SGv"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
+                        <outlet property="timeLabel" destination="jTf-UB-B0f" id="Hmh-64-9FE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ll-kd-eVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2359.4202898550725" y="83.035714285714278"/>
+            <point key="canvasLocation" x="2664" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1fL-bK-FZa">
