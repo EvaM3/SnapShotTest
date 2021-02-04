@@ -61,6 +61,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         timeLabel.text = "Seconds: \(counter)"
         if counter == 0 {
             timer.invalidate()
+            self.gameCollectionView.isHidden = true
         }
     }
     
