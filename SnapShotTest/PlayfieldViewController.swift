@@ -13,17 +13,12 @@ import Social
 
 
 class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate,UICollectionViewDropDelegate {
-    
-    
-    
-    
-    
+  
     @IBOutlet var shuffledCollectionView: UICollectionView!    
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
-    
     
     var imageArray : [UIImage] = []
     var originalImage = UIImage()
@@ -36,9 +31,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var score = 0
     var hintImage = UIImageView()
-    var timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
-    var counter = 0
-    
     
     
     @objc func showHintImage() {
@@ -56,14 +48,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.isHidden = false
         
     }
-    @objc func countDown() {
-        counter -= 1
-        timeLabel.text = "Seconds: \(counter)"
-        if counter == 0 {
-            timer.invalidate()
-            self.gameCollectionView.isHidden = true
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +55,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
         scoreLabel.text = "Score: \(score)"
         gameArray = Array(repeating: defaultImage, count: 16)
-        shuffledArray = imageArray.shuffled()
-        counter = 60
-        timeLabel.text = "Seconds:\(counter)"
+        shuffledArray = imageArray
         
         self.navigationController?.isNavigationBarHidden = true
         shuffledCollectionView.isScrollEnabled = false
@@ -123,6 +105,26 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.reloadData()
         increaseScore(n: 5)
     }
+    
+    
+    func solvedPuzzle() {
+        if self.gameArray == self.imageArray {
+            let alert = UIAlertController(title: "You Won!", message: "Congratulations✌️", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            let shareMyText = "My score on Gridy is \(score)"
+            let activityVc = UIActivityViewController(activityItems: [shareMyText], applicationActivities: nil)
+            present(activityVc, animated: true, completion: nil)
+            if let popOver = activityVc.popoverPresentationController {
+                popOver.sourceView = view
+                popOver.sourceView?.center = view.center
+            }
+            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {(action) in self.restartGame() })
+            alert.addAction(okAction)
+            alert.addAction(restartAction)  // possibility for new game
+            self.present(alert,animated: true, completion: nil)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == shuffledCollectionView {
@@ -181,7 +183,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if shuffledArray[indexPath.row] == defaultImage {
             return [UIDragItem]()
         }
-        let item = self.shuffledArray[indexPath.row]
+        let item = self.shuffledArray[indexPath.row]    // change item to indexPathrow
         let itemProvider = NSItemProvider(object: item)
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = indexPath
@@ -198,38 +200,19 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             
         }
         
-        
-        
-        
-        func solvedPuzzle() {
-            if self.gameArray == self.imageArray {
-                let alert = UIAlertController(title: "You Won!", message: "Congratulations✌️", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                let shareMyText = "My score on Gridy is \(score)"
-                let activityVc = UIActivityViewController(activityItems: [shareMyText], applicationActivities: nil)
-                present(activityVc, animated: true, completion: nil)
-                if let popOver = activityVc.popoverPresentationController {
-                    popOver.sourceView = view
-                    popOver.sourceView?.center = view.center
-                }
-                let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {(action) in self.restartGame() })
-                alert.addAction(okAction)
-                alert.addAction(restartAction)
-                self.present(alert,animated: true, completion: nil)
-            }
-        }
         coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
-                    let newImage = imagesDropped[0]
-                    self.gameArray.remove(at: destinationIndexPath.row)
-                    self.gameArray.insert(newImage, at: destinationIndexPath.row)
-                    collectionView.reloadData()
                     if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
+                    self.gameArray.remove(at: destinationIndexPath.row)
+                        self.gameArray.insert(self.shuffledArray[removeIndexPath.row], at: destinationIndexPath.row)
+                    collectionView.reloadData()
+                    
                         self.shuffledArray.remove(at:removeIndexPath.row)
                         self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
                         self.shuffledCollectionView.reloadData()
                         self.increaseScore()
+                        self.solvedPuzzle()
                     }
                     
                     
