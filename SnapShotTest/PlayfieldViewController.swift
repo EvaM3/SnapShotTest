@@ -31,7 +31,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var score = 0
     var hintImage = UIImageView()
-    
+   
     
     @objc func showHintImage() {
         hintImage.image = originalImage
@@ -73,7 +73,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.shuffledCollectionView.dataSource = self
         self.gameCollectionView.dataSource = self
         shuffledCollectionView.layoutSubviews()
-        
+        self.navigationController?.isNavigationBarHidden = true
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap(_gesture:)))
@@ -183,10 +183,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if shuffledArray[indexPath.row] == defaultImage {
             return [UIDragItem]()
         }
-        let item = self.shuffledArray[indexPath.row]    // change item to indexPathrow
+        let item = self.shuffledArray[indexPath.row]
         let itemProvider = NSItemProvider(object: item)
         let dragItem = UIDragItem(itemProvider: itemProvider)
-        dragItem.localObject = indexPath
+        dragItem.localObject = indexPath   // attaching a sticker to it
         return [dragItem]
     }
     
@@ -203,7 +203,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         coordinator.session.loadObjects(ofClass: UIImage.self) { (NSItemProviderReadingItems) in
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
-                    if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {
+                    if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {  // reading  the sticker info
                     self.gameArray.remove(at: destinationIndexPath.row)
                         self.gameArray.insert(self.shuffledArray[removeIndexPath.row], at: destinationIndexPath.row)
                     collectionView.reloadData()

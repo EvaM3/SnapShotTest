@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WWx-43-tuu">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,22 +14,22 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Main View Controller" customClass="MainViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="tiger2" translatesAutoresizingMaskIntoConstraints="NO" id="otG-9U-iF2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="dWm-WP-pg5" userLabel="MainStackView">
-                                <rect key="frame" x="57" y="407" width="300" height="445"/>
+                                <rect key="frame" x="57" y="319" width="206" height="239"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cc8-eH-44v" userLabel="CutOutStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="350"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="144"/>
                                         <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
                                         <variation key="heightClass=compact-widthClass=regular" spacingType="standard"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wxW-VT-44H" userLabel="StartButtonStack">
-                                        <rect key="frame" x="100" y="395" width="100" height="50"/>
+                                        <rect key="frame" x="53" y="189" width="100" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJO-IZ-ywF">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
@@ -56,31 +56,31 @@
                                 <variation key="heightClass=compact-widthClass=regular" alignment="bottom" spacing="63"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67c-oE-U17">
-                                <rect key="frame" x="0.0" y="88" width="300" height="350"/>
+                                <rect key="frame" x="10" y="134" width="300" height="300"/>
                                 <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="0.6228328339041096" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="92q-29-1rm"/>
-                                    <constraint firstAttribute="height" constant="350" id="Ftn-Xn-Zcf"/>
-                                    <constraint firstAttribute="width" constant="300" id="ZOQ-qV-Kfb"/>
+                                    <constraint firstAttribute="height" constant="300" id="8u7-qR-fvd"/>
+                                    <constraint firstAttribute="width" constant="300" id="pFJ-IB-WTY"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="otG-9U-iF2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6fs-rA-cdb"/>
+                            <constraint firstItem="67c-oE-U17" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9KU-Fg-ySs"/>
                             <constraint firstItem="dWm-WP-pg5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="9Mb-ga-xGa"/>
                             <constraint firstItem="dWm-WP-pg5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BEp-f8-R2K"/>
                             <constraint firstAttribute="trailing" secondItem="otG-9U-iF2" secondAttribute="trailing" id="IjF-3O-fH6"/>
-                            <constraint firstItem="67c-oE-U17" firstAttribute="leading" secondItem="otG-9U-iF2" secondAttribute="leading" id="QgT-W6-C1R"/>
+                            <constraint firstItem="67c-oE-U17" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="POH-JP-jiO"/>
                             <constraint firstAttribute="bottom" secondItem="otG-9U-iF2" secondAttribute="bottom" id="Xnx-X1-Av5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dWm-WP-pg5" secondAttribute="bottom" constant="10" id="bOR-lI-6EC"/>
-                            <constraint firstItem="67c-oE-U17" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fhQ-qY-L5p"/>
                             <constraint firstItem="dWm-WP-pg5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="319" id="oox-GS-s21"/>
                             <constraint firstItem="otG-9U-iF2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xcZ-TQ-cV6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="xdi-sy-E7W"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="canvasImage" destination="otG-9U-iF2" id="4m0-b8-Btx"/>
                         <outlet property="cutOut" destination="67c-oE-U17" id="tYB-lS-tnd"/>
@@ -97,53 +97,45 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="3kp-9d-SKv" userLabel="PlayfieldVC" customClass="PlayfieldViewController" customModule="SnapShotTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mza-Bm-Oeh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
-                                <rect key="frame" x="32" y="501" width="350" height="350"/>
+                                <rect key="frame" x="0.0" y="283" width="320" height="285"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
                                     <size key="itemSize" width="128" height="128"/>
+                                    <size key="estimatedItemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCell" id="mwa-6D-Rj7" userLabel="GameCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JS0-Os-boO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="85" height="60"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
-                                <rect key="frame" x="317" y="441" width="77" height="38"/>
+                                <rect key="frame" x="227" y="4" width="77" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
-                                <rect key="frame" x="20" y="441" width="38" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="38" id="6pT-SY-Nvs"/>
-                                </constraints>
-                                <state key="normal" image="lookup"/>
-                                <connections>
-                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
-                                <rect key="frame" x="32" y="88" width="350" height="350"/>
+                                <rect key="frame" x="0.0" y="38" width="320" height="237"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="1ZK-cs-1iT"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="311" id="xJG-75-fEn"/>
+                                    <constraint firstAttribute="height" constant="237" id="1ZK-cs-1iT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="225" id="xJG-75-fEn"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -151,35 +143,48 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayfieldCell" id="wqO-uk-JzO" customClass="PlayfieldCell" customModule="SnapShotTest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="76" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2rj-7c-kbX">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="76" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="76" height="60"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
+                                <rect key="frame" x="16" y="4" width="59" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="46M-Hi-Wd5"/>
+                                    <constraint firstAttribute="width" constant="59" id="6pT-SY-Nvs"/>
+                                </constraints>
+                                <state key="normal" image="lookup"/>
+                                <connections>
+                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="leading" secondItem="mza-Bm-Oeh" secondAttribute="leadingMargin" id="4ze-4X-4Q2"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="32" id="63s-6v-gKW"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="8Ny-TW-95M"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" constant="-5" id="BhB-VJ-igs"/>
-                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" constant="32" id="Gua-GW-7CL"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="32" id="RDu-uy-uGz"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="zWS-iD-5jP" secondAttribute="bottom" constant="11" id="V0u-jg-b4L"/>
-                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="32" id="VWn-jZ-Bnc"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="3" id="dbn-Tq-nel"/>
-                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="20" id="ejy-wS-ANE"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="63s-6v-gKW"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="38" id="8Ny-TW-95M"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="centerY" secondItem="ab1-dQ-CKY" secondAttribute="centerY" constant="2.25" id="BhB-VJ-igs"/>
+                            <constraint firstItem="2hW-ZE-AIX" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="Gua-GW-7CL"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="253" id="RDu-uy-uGz"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="zWS-iD-5jP" secondAttribute="bottom" id="V0u-jg-b4L"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="253" id="VWn-jZ-Bnc"/>
+                            <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="Y70-AX-m4X"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="-271" id="dbn-Tq-nel"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="16" id="ejy-wS-ANE"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="hnc-bq-Iu7"/>
-                            <constraint firstItem="ab1-dQ-CKY" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="353" id="oyX-pI-wLY"/>
-                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" constant="32" id="xDK-kJ-cTH"/>
+                            <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="xDK-kJ-cTH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
                     </view>
                     <navigationItem key="navigationItem" id="WLA-aT-kNs"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
@@ -189,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ll-kd-eVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663.768115942029" y="83.705357142857139"/>
+            <point key="canvasLocation" x="2662.5" y="83.450704225352112"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1fL-bK-FZa">
@@ -197,7 +202,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WWx-43-tuu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Hs-mX-6Tb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
