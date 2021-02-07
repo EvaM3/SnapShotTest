@@ -13,12 +13,15 @@ import Social
 
 
 class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate,UICollectionViewDropDelegate {
-  
+    
     @IBOutlet var shuffledCollectionView: UICollectionView!    
     @IBOutlet var gameCollectionView: UICollectionView!
     @IBOutlet var lookUpButton: UIButton!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var restartButton: UIButton!
+    
+    
     
     var imageArray : [UIImage] = []
     var originalImage = UIImage()
@@ -31,7 +34,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var score = 0
     var hintImage = UIImageView()
-   
+    
     
     @objc func showHintImage() {
         hintImage.image = originalImage
@@ -141,6 +144,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         increaseScore()
     }
     
+    @IBAction func restartButtonTapped(_ sender: Any) {
+        
+        self.dismiss(animated: false, completion: nil)
+    
+    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
@@ -204,10 +214,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
                     if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {  // reading  the sticker info
-                    self.gameArray.remove(at: destinationIndexPath.row)
+                        self.gameArray.remove(at: destinationIndexPath.row)
                         self.gameArray.insert(self.shuffledArray[removeIndexPath.row], at: destinationIndexPath.row)
-                    collectionView.reloadData()
-                    
+                        collectionView.reloadData()
+                        
                         self.shuffledArray.remove(at:removeIndexPath.row)
                         self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
                         self.shuffledCollectionView.reloadData()

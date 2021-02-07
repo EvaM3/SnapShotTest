@@ -164,6 +164,19 @@
                                     <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRv-RV-rIq">
+                                <rect key="frame" x="130" y="0.0" width="60" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="2mL-iB-8x0"/>
+                                    <constraint firstAttribute="width" constant="60" id="57K-b3-MgS"/>
+                                </constraints>
+                                <state key="normal" title="Restart" backgroundImage="sparkle">
+                                    <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="restartButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="11N-v0-bOf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -179,6 +192,8 @@
                             <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="-271" id="dbn-Tq-nel"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="16" id="ejy-wS-ANE"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="hnc-bq-Iu7"/>
+                            <constraint firstItem="BRv-RV-rIq" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" id="m3h-3i-3CC"/>
+                            <constraint firstItem="BRv-RV-rIq" firstAttribute="centerX" secondItem="2hW-ZE-AIX" secondAttribute="centerX" id="qaP-6s-uH1"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="zWS-iD-5jP" secondAttribute="trailing" id="xDK-kJ-cTH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZq-Lx-y2h"/>
@@ -188,6 +203,7 @@
                     <connections>
                         <outlet property="gameCollectionView" destination="zWS-iD-5jP" id="1ce-mY-aPb"/>
                         <outlet property="lookUpButton" destination="Lf5-Jq-WeN" id="ooB-ak-y1L"/>
+                        <outlet property="restartButton" destination="BRv-RV-rIq" id="vIR-f5-29a"/>
                         <outlet property="scoreLabel" destination="ab1-dQ-CKY" id="FfL-ZH-SGv"/>
                         <outlet property="shuffledCollectionView" destination="2hW-ZE-AIX" id="aZ0-ia-688"/>
                     </connections>
@@ -217,6 +233,7 @@
     </scenes>
     <resources>
         <image name="lookup" width="36" height="28"/>
+        <image name="sparkle" width="3872" height="2592"/>
         <image name="tiger2" width="4396" height="2798"/>
     </resources>
 </document>
