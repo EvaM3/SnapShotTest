@@ -181,13 +181,19 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == shuffledCollectionView {
+            return 1
+        } else {
         return 0
     }
-    
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == shuffledCollectionView {
+            return 1
+        } else {
         return 0
     }
-    
+    }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         if shuffledArray[indexPath.row] == defaultImage {
