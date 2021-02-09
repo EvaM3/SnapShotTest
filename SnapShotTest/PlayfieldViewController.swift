@@ -146,7 +146,9 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBAction func restartButtonTapped(_ sender: Any) {
         
-        self.dismiss(animated: false, completion: nil)
+    navigationController?.popToRootViewController(animated: true)
+        
+        //self.dismiss(animated: false, completion: nil)
     
     }
     
