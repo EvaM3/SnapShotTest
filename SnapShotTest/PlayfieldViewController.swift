@@ -121,9 +121,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                 popOver.sourceView = view
                 popOver.sourceView?.center = view.center
             }
-            let restartAction = UIAlertAction(title: "Restart", style: .default, handler: {(action) in self.restartGame() })
             alert.addAction(okAction)
-            alert.addAction(restartAction)  // possibility for new game
             self.present(alert,animated: true, completion: nil)
         }
     }

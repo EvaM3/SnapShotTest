@@ -101,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
-                                <rect key="frame" x="0.0" y="271" width="320" height="297"/>
+                                <rect key="frame" x="0.0" y="263" width="320" height="305"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
                                     <size key="itemSize" width="128" height="128"/>
@@ -123,17 +123,17 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Score:   0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-dQ-CKY" userLabel="scoreLabel">
-                                <rect key="frame" x="227" y="4" width="77" height="21.5"/>
+                                <rect key="frame" x="227" y="-4" width="77" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
-                                <rect key="frame" x="0.0" y="38" width="320" height="188"/>
+                                <rect key="frame" x="0.0" y="38" width="320" height="163"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="188" id="1ZK-cs-1iT"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="188" id="xJG-75-fEn"/>
+                                    <constraint firstAttribute="height" constant="163" id="1ZK-cs-1iT"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="163" id="xJG-75-fEn"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gq9-4n-sDG">
                                     <size key="itemSize" width="128" height="128"/>
@@ -153,17 +153,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
-                                <rect key="frame" x="261" y="234" width="59" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="46M-Hi-Wd5"/>
-                                    <constraint firstAttribute="width" constant="59" id="6pT-SY-Nvs"/>
-                                </constraints>
-                                <state key="normal" image="lookup"/>
-                                <connections>
-                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRv-RV-rIq">
                                 <rect key="frame" x="16" y="5" width="85" height="25"/>
                                 <constraints>
@@ -175,6 +164,17 @@
                                 </state>
                                 <connections>
                                     <action selector="restartButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="11N-v0-bOf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf5-Jq-WeN" userLabel="lookUpButton">
+                                <rect key="frame" x="261" y="226" width="59" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="46M-Hi-Wd5"/>
+                                    <constraint firstAttribute="width" constant="59" id="6pT-SY-Nvs"/>
+                                </constraints>
+                                <state key="normal" image="lookup"/>
+                                <connections>
+                                    <action selector="lookUpButtonTapped:" destination="3kp-9d-SKv" eventType="touchUpInside" id="h3p-vm-qKv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -189,7 +189,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="zWS-iD-5jP" secondAttribute="bottom" id="V0u-jg-b4L"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="top" secondItem="Lf5-Jq-WeN" secondAttribute="bottom" constant="11" id="VWn-jZ-Bnc"/>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="bottom" secondItem="uZq-Lx-y2h" secondAttribute="bottom" id="Y70-AX-m4X"/>
-                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="8" id="dbn-Tq-nel"/>
+                            <constraint firstItem="Lf5-Jq-WeN" firstAttribute="top" secondItem="2hW-ZE-AIX" secondAttribute="bottom" constant="25" id="dbn-Tq-nel"/>
                             <constraint firstItem="uZq-Lx-y2h" firstAttribute="trailing" secondItem="ab1-dQ-CKY" secondAttribute="trailing" constant="16" id="ejy-wS-ANE"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="centerX" secondItem="mza-Bm-Oeh" secondAttribute="centerX" id="hnc-bq-Iu7"/>
                             <constraint firstItem="BRv-RV-rIq" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="5" id="m3h-3i-3CC"/>
