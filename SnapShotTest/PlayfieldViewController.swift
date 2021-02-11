@@ -179,6 +179,14 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == shuffledCollectionView {
+                  return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+              } else {
+              return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+          }
+    }
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == shuffledCollectionView {
