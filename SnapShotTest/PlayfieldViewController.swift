@@ -144,10 +144,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     @IBAction func restartButtonTapped(_ sender: Any) {
         
-    navigationController?.popToRootViewController(animated: true)
-      restartGame()
+        navigationController?.popToRootViewController(animated: true)
+        restartGame()
         //self.dismiss(animated: false, completion: nil)
-    
+        
     }
     
     
@@ -174,33 +174,33 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth : CGFloat = collectionView.frame.width
-        let widthPerItem : CGFloat = collectionViewWidth / CGFloat(itemsPerRow)
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        if collectionView == shuffledCollectionView {
+            return CGSize(width: 50, height: 50)
+        } else {
+            let collectionViewWidth : CGFloat = collectionView.frame.width
+            let widthPerItem : CGFloat = collectionViewWidth / CGFloat(itemsPerRow)
+            return CGSize(width: widthPerItem, height: widthPerItem)
+        }
     }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if collectionView == shuffledCollectionView {
-                  return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-              } else {
-              return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-          }
+            return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        } else {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
     }
-   
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == shuffledCollectionView {
-            return 1
-        } else {
-        return 0
+            return 0   // keep it 0
     }
-    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == shuffledCollectionView {
-            return 1
+            return 0.5
         } else {
-        return 0
-    }
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -253,6 +253,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
 }
+
 
 
 
