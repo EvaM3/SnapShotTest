@@ -177,6 +177,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == shuffledCollectionView {
             return CGSize(width: 50, height: 50)
         } else {
+            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//            layout.minimumLineSpacing = 0
+//            layout.minimumInteritemSpacing = 0
+//            collectionView.collectionViewLayout = layout
             let collectionViewWidth : CGFloat = collectionView.frame.width
             let widthPerItem : CGFloat = collectionViewWidth / CGFloat(itemsPerRow)
             return CGSize(width: widthPerItem, height: widthPerItem)
@@ -202,6 +206,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             return 0
         }
     }
+    
+
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         if shuffledArray[indexPath.row] == defaultImage {
