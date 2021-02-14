@@ -163,6 +163,8 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
             imageView.image = gameArray[indexPath.row]
+            cell.layer.borderWidth = 0.2
+            cell.layer.borderColor = UIColor.lightGray.cgColor
             
         }
         imageView.frame = cell.contentView.frame
@@ -177,10 +179,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == shuffledCollectionView {
             return CGSize(width: 50, height: 50)
         } else {
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//            layout.minimumLineSpacing = 0
-//            layout.minimumInteritemSpacing = 0
-//            collectionView.collectionViewLayout = layout
             let collectionViewWidth : CGFloat = collectionView.frame.width
             let widthPerItem : CGFloat = collectionViewWidth / CGFloat(itemsPerRow)
             return CGSize(width: widthPerItem, height: widthPerItem)
