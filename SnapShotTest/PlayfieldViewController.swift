@@ -158,11 +158,16 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == shuffledCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
             imageView.image = shuffledArray[indexPath.row]
-            
+            shuffledCollectionView.layer.borderWidth = 0.3
+            shuffledCollectionView.layer.borderColor = UIColor.black.cgColor
+            cell.layer.borderWidth = 0.2
+            cell.layer.borderColor = UIColor.darkGray.cgColor
         }
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
             imageView.image = gameArray[indexPath.row]
+            gameCollectionView.layer.borderWidth = 0.3
+            gameCollectionView.layer.borderColor = UIColor.black.cgColor
             cell.layer.borderWidth = 0.2
             cell.layer.borderColor = UIColor.lightGray.cgColor
             
