@@ -169,7 +169,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             gameCollectionView.layer.borderWidth = 0.3
             gameCollectionView.layer.borderColor = UIColor.black.cgColor
             cell.layer.borderWidth = 0.2
-            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.borderColor = UIColor.black.cgColor
             
         }
         imageView.frame = cell.contentView.frame

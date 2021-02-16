@@ -107,7 +107,7 @@
                                     <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="JU2-te-Gwa"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN0-m0-Mml">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="97" height="80"/>
                                     <size key="estimatedItemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -115,13 +115,13 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCell" id="mwa-6D-Rj7" userLabel="GameCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JS0-Os-boO">
-                                            <rect key="frame" x="0.0" y="0.0" width="85" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="97" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="85" height="60"/>
+                                        <size key="customSize" width="97" height="80"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -133,7 +133,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
                                 <rect key="frame" x="0.0" y="38" width="320" height="163"/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.91372549020000005" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="163" id="1ZK-cs-1iT"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="163" id="xJG-75-fEn"/>
