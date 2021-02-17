@@ -174,7 +174,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
-        cell.layoutIfNeeded()
+       // cell.layoutIfNeeded()
         return cell
         
     }
@@ -182,11 +182,11 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == shuffledCollectionView {
-            return CGSize(width: 50, height: 50)
+            return CGSize(width: 60, height: 60)
         } else {
             let collectionViewWidth : CGFloat = collectionView.frame.width
             let widthPerItem : CGFloat = collectionViewWidth / CGFloat(itemsPerRow)
-            return CGSize(width: widthPerItem, height: widthPerItem)
+            return CGSize(width: widthPerItem - 1, height: widthPerItem - 1)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
