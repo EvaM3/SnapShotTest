@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Social
+
 
 
 
@@ -54,6 +54,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        UIApplication.shared.windows.forEach { window in
+              window.overrideUserInterfaceStyle = .light
+          }
         
         imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
         scoreLabel.text = "Score: \(score)"
@@ -158,17 +162,16 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         if collectionView == shuffledCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayfieldCell", for: indexPath)
             imageView.image = shuffledArray[indexPath.row]
-            shuffledCollectionView.layer.borderWidth = 0.3
-            shuffledCollectionView.layer.borderColor = UIColor.black.cgColor
-            cell.layer.borderWidth = 0.2
-            cell.layer.borderColor = UIColor.darkGray.cgColor
+        
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.black.cgColor
         }
         if collectionView == gameCollectionView {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GameCell", for: indexPath)
             imageView.image = gameArray[indexPath.row]
-            gameCollectionView.layer.borderWidth = 0.3
+            gameCollectionView.layer.borderWidth = 0.5
             gameCollectionView.layer.borderColor = UIColor.black.cgColor
-            cell.layer.borderWidth = 0.2
+            cell.layer.borderWidth = 0.5
             cell.layer.borderColor = UIColor.black.cgColor
             
         }

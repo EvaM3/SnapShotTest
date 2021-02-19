@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet var canvasImage: UIImageView!
     @IBOutlet var startButton: UIButton!
     var originalImage = UIImage()
-    
+  
     
     
     

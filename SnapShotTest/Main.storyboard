@@ -102,7 +102,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWS-iD-5jP" userLabel="GameCollectionView" customClass="GameCollectionView">
                                 <rect key="frame" x="0.0" y="248" width="320" height="320"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zWS-iD-5jP" secondAttribute="height" multiplier="1:1" id="JU2-te-Gwa"/>
                                 </constraints>
@@ -133,7 +133,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2hW-ZE-AIX" userLabel="StarterCollectionView" customClass="StarterCollectionView" customModule="SnapShotTest">
                                 <rect key="frame" x="0.0" y="38" width="320" height="163"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="163" id="1ZK-cs-1iT"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="163" id="xJG-75-fEn"/>
@@ -182,7 +182,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zWS-iD-5jP" firstAttribute="leading" secondItem="uZq-Lx-y2h" secondAttribute="leading" id="63s-6v-gKW"/>
                             <constraint firstItem="2hW-ZE-AIX" firstAttribute="top" secondItem="uZq-Lx-y2h" secondAttribute="top" constant="38" id="8Ny-TW-95M"/>
