@@ -54,12 +54,13 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .dark
         UIApplication.shared.windows.forEach { window in
               window.overrideUserInterfaceStyle = .light
           }
         
         imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
+        scoreLabel.textColor = .systemBlue
         scoreLabel.text = "Score: \(score)"
         gameArray = Array(repeating: defaultImage, count: 16)
         shuffledArray = imageArray
@@ -73,6 +74,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         gameCollectionView.dragDelegate = self
         shuffledCollectionView.dropDelegate = self
         gameCollectionView.dropDelegate = self
+        view.backgroundColor = .systemBackground
+        gameCollectionView.backgroundColor = .secondarySystemBackground
+        shuffledCollectionView.backgroundColor = .tertiarySystemBackground
+   
         
         self.shuffledCollectionView.delegate = self
         self.gameCollectionView.delegate = self
