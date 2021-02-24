@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0834486D252A70FC00C4E27F /* UIImage+splitImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834486C252A70FC00C4E27F /* UIImage+splitImage.swift */; };
 		083CEF1025286022004204B0 /* UIImage+cropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083CEF0F25286022004204B0 /* UIImage+cropImage.swift */; };
+		084A4B8E25E5D46F00185457 /* glitter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 084A4B8D25E5D46F00185457 /* glitter.wav */; };
 		085B77C725474EE5003D4D03 /* PlayfieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */; };
 		08716BFC252E8D5200ECDEF9 /* UIView+takeScreenShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08716BFB252E8D5200ECDEF9 /* UIView+takeScreenShot.swift */; };
 		08C2084025B27103003E4609 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08C2083F25B27103003E4609 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0834486C252A70FC00C4E27F /* UIImage+splitImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+splitImage.swift"; sourceTree = "<group>"; };
 		083CEF0F25286022004204B0 /* UIImage+cropImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+cropImage.swift"; sourceTree = "<group>"; };
+		084A4B8D25E5D46F00185457 /* glitter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glitter.wav; sourceTree = "<group>"; };
 		085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayfieldViewController.swift; sourceTree = "<group>"; };
 		08716BFB252E8D5200ECDEF9 /* UIView+takeScreenShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+takeScreenShot.swift"; sourceTree = "<group>"; };
 		08C2083E25B26F31003E4609 /* SnapShotTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapShotTest-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				08FD4F26250C3C93002AD6F0 /* MainViewController.swift */,
 				085B77C625474EE5003D4D03 /* PlayfieldViewController.swift */,
 				08C2083F25B27103003E4609 /* Main.storyboard */,
+				084A4B8D25E5D46F00185457 /* glitter.wav */,
 				08FD4F2B250C3C95002AD6F0 /* Assets.xcassets */,
 				08FD4F2D250C3C95002AD6F0 /* LaunchScreen.storyboard */,
 				08C2083E25B26F31003E4609 /* SnapShotTest-Bridging-Header.h */,
@@ -142,6 +145,7 @@
 			files = (
 				08C2084025B27103003E4609 /* Main.storyboard in Resources */,
 				08FD4F2F250C3C95002AD6F0 /* LaunchScreen.storyboard in Resources */,
+				084A4B8E25E5D46F00185457 /* glitter.wav in Resources */,
 				08FD4F2C250C3C95002AD6F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

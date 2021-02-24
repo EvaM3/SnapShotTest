@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AVFoundation
 
 
 
@@ -34,7 +34,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     var gameTimer: Timer?
     var score = 0
     var hintImage = UIImageView()
-    
+    var audioPlayer: AVAudioPlayer!
     
     @objc func showHintImage() {
         hintImage.image = originalImage
@@ -54,11 +54,19 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        overrideUserInterfaceStyle = .dark
-        UIApplication.shared.windows.forEach { window in
-              window.overrideUserInterfaceStyle = .light
-          }
-        
+        do {
+        let tunePath = Bundle.main.path(forResource: "glitter", ofType: "wav")!
+        let tuneUrl = URL(fileURLWithPath: tunePath)
+        audioPlayer = try AVAudioPlayer(contentsOf: tuneUrl)
+        audioPlayer.prepareToPlay()
+        } catch {
+            print("Something went wrong with audio player \(error.localizedDescription)")
+        }
+       // overrideUserInterfaceStyle = .dark
+//        UIApplication.shared.windows.forEach { window in
+//              window.overrideUserInterfaceStyle = .dark
+//          }
+//
         imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
         scoreLabel.textColor = .systemBlue
         scoreLabel.text = "Score: \(score)"
@@ -147,6 +155,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     @IBAction func lookUpButtonTapped(_ sender: UIButton) {
+        audioPlayer.play()
         showHintImage()
         increaseScore()
     }
