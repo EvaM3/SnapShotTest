@@ -44,11 +44,12 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         self.gameCollectionView.isHidden = true
         self.view.bringSubviewToFront(hintImage)
         gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(removeHintImage), userInfo: nil, repeats: false)
+        
         UIView.animate(withDuration: 1.0,
             delay: 0.0,
             usingSpringWithDamping: 0.3,
             initialSpringVelocity: 1,
-            options: UIView.AnimationOptions.curveEaseInOut,
+            options: UIView.AnimationOptions.transitionCurlUp,
             animations: ({
                 self.hintImage.frame = CGRect(x: 0, y: 0, width: self.hintImage.frame.width, height: self.hintImage.frame.height)
                 self.hintImage.center = self.view.center
@@ -69,18 +70,14 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-        let tunePath = Bundle.main.path(forResource: "glitter", ofType: "wav")!
-        let tuneUrl = URL(fileURLWithPath: tunePath)
-        audioPlayer = try AVAudioPlayer(contentsOf: tuneUrl)
-        audioPlayer.prepareToPlay()
+            let tunePath = Bundle.main.path(forResource: "glitter", ofType: "wav")!
+            let tuneUrl = URL(fileURLWithPath: tunePath)
+            audioPlayer = try AVAudioPlayer(contentsOf: tuneUrl)
+            audioPlayer.prepareToPlay()
         } catch {
             print("Something went wrong with audio player \(error.localizedDescription)")
         }
-       // overrideUserInterfaceStyle = .dark
-//        UIApplication.shared.windows.forEach { window in
-//              window.overrideUserInterfaceStyle = .dark
-//          }
-//
+        
         imageArray = originalImage.splitImage(row: Int(itemsPerRow), column: Int(itemsPerRow))
         scoreLabel.textColor = .systemBlue
         scoreLabel.text = "Score: \(score)"
@@ -99,7 +96,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         view.backgroundColor = .systemBackground
         gameCollectionView.backgroundColor = .secondarySystemBackground
         shuffledCollectionView.backgroundColor = .tertiarySystemBackground
-   
+        
         
         self.shuffledCollectionView.delegate = self
         self.gameCollectionView.delegate = self
@@ -178,7 +175,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
         navigationController?.popToRootViewController(animated: true)
         restartGame()
-        //self.dismiss(animated: false, completion: nil)
         
     }
     
@@ -205,7 +201,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         imageView.frame = cell.contentView.frame
         cell.addSubview(imageView)
-       // cell.layoutIfNeeded()
         return cell
         
     }
