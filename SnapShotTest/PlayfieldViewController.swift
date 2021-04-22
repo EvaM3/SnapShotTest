@@ -49,7 +49,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             delay: 0.0,
             usingSpringWithDamping: 0.3,
             initialSpringVelocity: 1,
-            options: UIView.AnimationOptions.transitionCurlUp,
+            options: UIView.AnimationOptions.curveEaseInOut,
             animations: ({
                 self.hintImage.frame = CGRect(x: 0, y: 0, width: self.hintImage.frame.width, height: self.hintImage.frame.height)
                 self.hintImage.center = self.view.center
@@ -205,7 +205,6 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
         
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == shuffledCollectionView {
             return CGSize(width: 60, height: 60)
@@ -263,10 +262,10 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
             if let imagesDropped = NSItemProviderReadingItems as? [UIImage] {
                 if imagesDropped.count > 0 {
                     if let removeIndexPath = coordinator.items.first?.dragItem.localObject as? IndexPath  {  // reading  the sticker info
+                    
                         self.gameArray.remove(at: destinationIndexPath.row)
                         self.gameArray.insert(self.shuffledArray[removeIndexPath.row], at: destinationIndexPath.row)
                         collectionView.reloadData()
-                        
                         self.shuffledArray.remove(at:removeIndexPath.row)
                         self.shuffledArray.insert(self.defaultImage, at: removeIndexPath.row)
                         self.shuffledCollectionView.reloadData()
@@ -277,10 +276,7 @@ class PlayfieldViewController: UIViewController, UICollectionViewDelegate, UICol
                     
                 }
             }
-            
-            
-            
-            
+          
             
         }
         
